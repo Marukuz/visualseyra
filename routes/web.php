@@ -13,11 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
-
-Route::get('/inicio','App\\Http\\Controllers\\InicioController@index')->middleware('auth');
-
-
+Route::get('/','App\\Http\\Controllers\\InicioController@index');
 require __DIR__.'/auth.php';
