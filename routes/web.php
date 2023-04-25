@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PerfilController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','App\\Http\\Controllers\\InicioController@index');
+Route::get('/','App\\Http\\Controllers\\InicioController@index')->name('inicio');
+
+Route::get('/perfil',[PerfilController::class, 'index'])->name('perfil');
+
+
 require __DIR__.'/auth.php';

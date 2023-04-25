@@ -19,7 +19,6 @@
     <div class="container my-5">
         <h1>Bienvenidos a mi página de fotografía</h1>
         <p>En esta página encontrarás mi trabajo como fotógrafo profesional. Me especializo en retratos, fotografía de paisajes y eventos especiales. Espero que disfrutes de mi galería y que te animes a contactarme para trabajar juntos.</p>
-        <a href="#" class="btn btn-primary">Contáctame</a>
     </div>
 </main>
 @endsection

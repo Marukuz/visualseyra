@@ -40,18 +40,27 @@
                             <a class="btn btn-primary" href="{{ route('login') }}">Log-in</a>
                         </li>
                         @else
-                        <a class="nav-link">Bienvenido {{ Auth::user()->name }}</a>
-                        <li class="nav-item">
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button class="btn btn-danger ">
-                                    <x-responsive-nav-link class="text-decoration-none text-white" :href="route('logout')" onclick="event.preventDefault();
-                                    this.closest('form').submit();">
-                                        {{ __('Log Out') }}
-                                    </x-responsive-nav-link>
-                                </button>
-                            </form>
-                        </li>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Bienvenido {{ Auth::user()->name }}                            
+                            </button>
+                            <ul class="dropdown-menu text-center">
+                                @if(Auth::user()->tipo == "Administrador")
+                                <li><a class="dropdown-item" href="{{ url('perfil') }}">Admin</a></li>
+                                @endif
+                                <li><a class="dropdown-item" href="{{ url('perfil') }}">Perfil</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button class="btn btn-danger mx-auto">
+                                        <x-responsive-nav-link class="text-decoration-none text-white" :href="route('logout')" onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                                            {{ __('Log Out') }}
+                                        </x-responsive-nav-link>
+                                    </button>
+                                </form>
+                            </ul>
+                        </div>
                         @endif
                     </ul>
                 </div>
