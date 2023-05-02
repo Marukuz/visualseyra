@@ -45,10 +45,10 @@
                             Bienvenido {{ Auth::user()->name }}                            
                             </button>
                             <ul class="dropdown-menu text-center">
+                                <li><a class="dropdown-item" href="{{ url('perfil') }}">Perfil</a></li>
                                 @if(Auth::user()->tipo == "Administrador")
                                 <li><a class="dropdown-item" href="{{ url('perfil') }}">Admin</a></li>
                                 @endif
-                                <li><a class="dropdown-item" href="{{ url('perfil') }}">Perfil</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf

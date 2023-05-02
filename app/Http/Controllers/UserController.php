@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
-class PerfilController extends Controller
+
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -82,5 +86,11 @@ class PerfilController extends Controller
     public function destroy($id)
     {
         //
+        
+        $user = User::find($id);
+        Auth::logout();
+        $user->delete();
+
+        return view('inicio/index');
     }
 }
