@@ -86,11 +86,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-        
         $user = User::find($id);
         Auth::logout();
         $user->delete();
-
-        return view('inicio/index');
     }
 }

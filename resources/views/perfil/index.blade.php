@@ -151,12 +151,13 @@
 			$('#deleteModal').modal('show');
 			$('#delete-user-button').click(function() {
 				$.ajax({
-					url: '/users/delete/' + userId,
+					url: '/perfil/' + userId,
 					method: 'DELETE',
 					data: {
 						_token: '{{ csrf_token() }}'
 					},
 					success: function() {
+						window.location.href = '{{ route('inicio.index') }}';
 					}
 				});
 			});
