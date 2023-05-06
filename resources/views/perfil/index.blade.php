@@ -23,27 +23,29 @@
 					<div class="num">{{ Auth::user()->created_at }}</div>
 				</div>
 			</div>
-			<br>
-			<div class="btn btn-danger btn-sm delete-user" data-user-id="{{ Auth::user()->id }}">
+			<div class="btn btn-primary btn-sm update-password" data-user-id="{{ Auth::user()->id }}">
+				Cambiar Contraseña
+			</div>
+			<div class="btn btn-danger btn-sm delete-user mt-4 mb-1" data-user-id="{{ Auth::user()->id }}">
 				Eliminar cuenta
 			</div>
 		</div>
 	</div>
 	<div class="profile_slider">
 		<ul>
-			<form>
+			<form action="{{ route('perfil.update', Auth::user()->id) }}" method="POST">
+				@csrf
+				@method('PUT')
 				<li>
 					<div class="slider_item">
 						<div class="slider_left">
-							<div class="img">
-								<img src="Therevenant.jpg" alt="">
-							</div>
 							<div class="item">
 								<div class="item_name">
-									DNI:
+									DNI: @error('dni')
+									@enderror
 								</div>
 								<div class="item_email">
-									<input type="text" class="form-control" value="{{ Auth::user()->dni }}">
+									<input type="text" name="dni" class="form-control" value="{{ Auth::user()->dni }}">
 								</div>
 							</div>
 						</div>
@@ -52,15 +54,13 @@
 				<li>
 					<div class="slider_item">
 						<div class="slider_left">
-							<div class="img">
-								<img src="elephants.jpg" alt="">
-							</div>
 							<div class="item">
 								<div class="item_name">
-									Nombre:
+									Nombre: @error('name')
+									@enderror
 								</div>
 								<div class="item_email">
-									<input type="text" class="form-control" value="{{ Auth::user()->name }}">
+									<input type="text" name="name" class="form-control" value="{{ Auth::user()->name }}">
 								</div>
 							</div>
 						</div>
@@ -69,15 +69,13 @@
 				<li>
 					<div class="slider_item">
 						<div class="slider_left">
-							<div class="img">
-								<img src="tomhanks.jpg" alt="">
-							</div>
 							<div class="item">
 								<div class="item_name">
-									Correo:
+									Correo: @error('email')
+									@enderror
 								</div>
 								<div class="item_email">
-									<input type="text" class="form-control" value="{{ Auth::user()->email }}">
+									<input type="text" name="email" class="form-control" value="{{ Auth::user()->email }}">
 								</div>
 							</div>
 						</div>
@@ -86,15 +84,13 @@
 				<li>
 					<div class="slider_item">
 						<div class="slider_left">
-							<div class="img">
-								<img src="tomhanks.jpg" alt="">
-							</div>
 							<div class="item">
 								<div class="item_name">
-									Telefono:
+									Telefono: @error('telefono')
+									@enderror
 								</div>
 								<div class="item_email">
-									<input type="text" class="form-control" value="{{ Auth::user()->telefono }}">
+									<input type="text" name="telefono" class="form-control" value="{{ Auth::user()->telefono }}">
 								</div>
 							</div>
 						</div>
@@ -104,7 +100,7 @@
 					<div class="slider_item">
 						<div class="text-center">
 							&nbsp;&nbsp;&nbsp;
-							<div class="btn btn_following">Modificar</div>
+							<button class="btn btn_following" type="submit">Modificar</button>
 						</div>
 					</div>
 				</li>
@@ -112,6 +108,9 @@
 		</ul>
 	</div>
 </div>
+
+<!-- MODAL BORRADO -->
+
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -131,6 +130,33 @@
     </div>
   </div>
 </div>
+
+<!-- MODAL EDITAR CONTRASEÑA -->
+<div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="passwordModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="deleteModalLabel">Cambia tu contraseña</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+			<label style="color: red" id="errorpass" hidden>Las contraseñas no coinciden.</label><br>
+			<label class="mt-2">Contraseña:</label>
+			<input type="password" id="pass1" class="form-control mt-2" name="password">
+
+			<label class="mt-2">Repite la contraseña:</label>
+			<input type="password" id="pass2" class="form-control mt-2">
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+			<button type="submit" class="btn btn-primary" id="update-pass-button">Modificar</button>
+		</div>
+	  </div>
+	</div>
+</div>
+
 <script>
 	var settings_btn = document.querySelector(".settings_btn");
 	var profile_slider = document.querySelector(".profile_slider");
@@ -163,5 +189,34 @@
 			});
 		});
 	});
+
+	$(function() {
+		$('.update-password').click(function() {
+			var userId = $(this).data('user-id');
+			$('#passwordModal').modal('show');
+			$('#update-pass-button').click(function(){
+				var password = $('#pass1').val();
+    			var pass2 = $('#pass2').val();
+				if (password != pass2) {
+        			$('#errorpass').removeAttr('hidden');
+    			}else{
+					$.ajax({
+					url: '/perfil/password/' + userId,
+					method: 'PUT',
+					data: {
+						password,
+						_token: '{{ csrf_token() }}'
+					},
+					success: function() {
+						window.location.href = '{{ route('perfil.index') }}';
+					}
+				});
+
+				}
+			})
+
+		});
+	});
+	
 </script>
 @endsection

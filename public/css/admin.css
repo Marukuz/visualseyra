@@ -1,0 +1,28 @@
+#sidebar {
+    position: fixed;
+    top: 55px;
+    left: 0;
+    height: calc(100vh - 60px);
+    width: 200px;
+    background-color: #fff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+#sidebar.active {
+    width: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#content {
+    margin-left: 200px;
+    transition: all 0.3s ease;
+}
+#content.active {
+    margin-left: 0;
+}
+.nav-link {
+    color: #333;
+    font-weight: bold;
+}

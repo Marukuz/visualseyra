@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 
-
-class UserController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +15,10 @@ class UserController extends Controller
     public function index()
     {
         //
-        return view('perfil/index');
-
+        $users = User::all();
+        return view('admin/index', compact('users'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -75,30 +73,6 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $datos = $request->validate([
-            'dni'=>['required','regex:/((^[A-Z]{1}[0-9]{7}[A-Z0-9]{1}$|^[T]{1}[A-Z0-9]{8}$)|^[0-9]{8}[A-Z]{1}$)/'],
-            'name'=>'required|regex:/^[a-z]+$/i',
-            'email'=>'required|email',
-            'telefono'=>['required','regex:/(\+34|0034|34)?[ -]*(6|7|8|9)[ -]*([0-9][ -]*){8}/'],
-        ]);
-    
-        $user = User::findOrFail($id);
-        $user->update($datos);
-        
-        return redirect()->route('perfil.index');
-    }
-
-    public function updatePass(Request $request, $id){
-        // Buscamos al usuario
-        $user = User::findOrFail($id);
-
-        // Recojemos la contraseña
-        $password = $request->password;
-        // La encriptamos
-        $password = bcrypt($password);
-        // Actualizamos la contraseña
-        $user->update(['password' => $password]);
-
     }
 
     /**
@@ -110,8 +84,5 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-        $user = User::find($id);
-        Auth::logout();
-        $user->delete();
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\InicioController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','App\\Http\\Controllers\\InicioController@index')->name('inicio');
 
+// Controller Resources
 Route::resource('perfil', UserController::class); 
 Route::resource('inicio', InicioController::class);
+Route::resource('admin', AdminController::class);
+
+// User Routes
+Route::put('/perfil/password/{id}', [UserController::class, 'updatePass'])->name('updatePassword');
 
 require __DIR__.'/auth.php';

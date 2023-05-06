@@ -47,7 +47,7 @@
                             <ul class="dropdown-menu text-center">
                                 <li><a class="dropdown-item" href="{{ url('perfil') }}">Perfil</a></li>
                                 @if(Auth::user()->tipo == "Administrador")
-                                <li><a class="dropdown-item" href="{{ url('perfil') }}">Admin</a></li>
+                                <li><a class="dropdown-item" href="{{ url('admin') }}">Admin</a></li>
                                 @endif
                                 <li><hr class="dropdown-divider"></li>
                                 <form method="POST" action="{{ route('logout') }}">

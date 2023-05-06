@@ -17,10 +17,12 @@ class CreateUsersTable extends Migration
             $table->charset = 'utf8';
             $table->collation = 'utf8_unicode_ci';
             $table->id();
+            $table->string('dni');
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->integer('telefono');
             $table->string('tipo')->nullable();
             $table->rememberToken();
             $table->timestamps();
