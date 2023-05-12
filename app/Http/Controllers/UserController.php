@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 
 class UserController extends Controller
@@ -19,7 +20,6 @@ class UserController extends Controller
     {
         //
         return view('perfil/index');
-
     }
 
     /**
@@ -40,7 +40,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'dni'=>['required','regex:/((^[A-Z]{1}[0-9]{7}[A-Z0-9]{1}$|^[T]{1}[A-Z0-9]{8}$)|^[0-9]{8}[A-Z]{1}$)/'],
+            'name'=>'required|regex:/^[a-z]+$/i',
+            'email'=>'required|email',
+            'telefono'=>['required','regex:/(\+34|0034|34)?[ -]*(6|7|8|9)[ -]*([0-9][ -]*){8}/'],
+        ]);
+
+        User::create($request->all());
+    
+        return response()->json(['success' => true]);
     }
 
     /**
@@ -76,19 +85,20 @@ class UserController extends Controller
     {
         //
         $datos = $request->validate([
-            'dni'=>['required','regex:/((^[A-Z]{1}[0-9]{7}[A-Z0-9]{1}$|^[T]{1}[A-Z0-9]{8}$)|^[0-9]{8}[A-Z]{1}$)/'],
-            'name'=>'required|regex:/^[a-z]+$/i',
-            'email'=>'required|email',
-            'telefono'=>['required','regex:/(\+34|0034|34)?[ -]*(6|7|8|9)[ -]*([0-9][ -]*){8}/'],
+            'dni' => ['required', 'regex:/((^[A-Z]{1}[0-9]{7}[A-Z0-9]{1}$|^[T]{1}[A-Z0-9]{8}$)|^[0-9]{8}[A-Z]{1}$)/'],
+            'name' => 'required|regex:/^[a-z]+$/i',
+            'email' => 'required|email',
+            'telefono' => ['required', 'regex:/(\+34|0034|34)?[ -]*(6|7|8|9)[ -]*([0-9][ -]*){8}/'],
         ]);
-    
+
         $user = User::findOrFail($id);
         $user->update($datos);
-        
+
         return redirect()->route('perfil.index');
     }
 
-    public function updatePass(Request $request, $id){
+    public function updatePass(Request $request, $id)
+    {
         // Buscamos al usuario
         $user = User::findOrFail($id);
 
@@ -98,7 +108,6 @@ class UserController extends Controller
         $password = bcrypt($password);
         // Actualizamos la contraseña
         $user->update(['password' => $password]);
-
     }
 
     /**

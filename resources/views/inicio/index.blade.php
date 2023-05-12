@@ -1,32 +1,94 @@
 @extends('plantilla')
 @section('contenido')
-<!-- Imagen principal -->
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="https://visualseyra.com/wp-content/uploads/2017/10/img-home.jpg" alt="First slide">
+  <!-- Imagen principal -->
+  <div class="container-fluid px-0">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="{{ asset('../img/carrousel1.jpg') }}" alt="Videografía y Fotografía">
+          <div class="carousel-caption d-md-block">
+            <h1 class="display-3 font-weight-bold text-light mb-3">Videografía y Fotografía</h1>
+            <p class="lead text-light mb-5">Capturamos tus mejores momentos</p>
+            <a href="#" class="btn btn-primary btn-lg">Conócenos</a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="{{ asset('../img/carrousel2.jpg') }}" alt="Videografía y Fotografía">
+          <div class="carousel-caption d-md-block">
+            <h1 class="display-3 font-weight-bold text-light mb-3">Videografía y Fotografía</h1>
+            <p class="lead text-light mb-5">Capturamos tus mejores momentos</p>
+            <a href="#" class="btn btn-primary btn-lg">Conócenos</a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="{{ asset('../img/carrousel3.jpg') }}" alt="Videografía y Fotografía">
+          <div class="carousel-caption d-md-block">
+            <h1 class="display-3 font-weight-bold text-light mb-3">Videografía y Fotografía</h1>
+            <p class="lead text-light mb-5">Capturamos tus mejores momentos</p>
+            <a href="#" class="btn btn-primary btn-lg">Conócenos</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="..." alt="Second slide">
+  </div>
+  <!-- /Imagen principal -->
+
+  <!-- Servicios -->
+  <div class="container my-5">
+    <h2 class="text-center mb-5">Nuestros servicios</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Servicio 1">
+          <div class="card-body">
+            <h3 class="card-title font-weight-bold">Fotografía</h3>
+            <p class="card-text">Capturamos tus mejores momentos con nuestras cámaras de alta resolución.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Servicio 2">
+          <div class="card-body">
+            <h3 class="card-title font-weight-bold">Videografía</h3>
+            <p class="card-text">Creamos videos de alta calidad que te permiten revivir tus momentos especiales.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Servicio 3">
+          <div class="card-body">
+            <h3 class="card-title font-weight-bold">Fotolibros</h3>
+            <p class="card-text">Creamos álbumes de fotos personalizados con tus mejores recuerdos.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="..." alt="Third slide">
+  </div>
+  <!-- /Servicios -->
+<!-- Galería -->
+<div class="container-fluid bg-light py-5">
+  <h2 class="text-center mb-5">Nuestra galería</h2>
+  <div class="row text-center">
+    <div class="col-md-4 mb-4">
+      <a href="https://via.placeholder.com/1200x800" data-toggle="lightbox" data-gallery="galeria-1" data-title="Foto 1" class="d-block">
+        <img class="img-fluid" src="https://via.placeholder.com/600x400" alt="Foto 1">
+      </a>
+    </div>
+    <div class="col-md-4 mb-4">
+      <a href="https://via.placeholder.com/1200x800" data-toggle="lightbox" data-gallery="galeria-1" data-title="Foto 2" class="d-block">
+        <img class="img-fluid" src="https://via.placeholder.com/600x400" alt="Foto 2">
+      </a>
+    </div>
+    <div class="col-md-4 mb-4">
+      <a href="https://via.placeholder.com/1200x800" data-toggle="lightbox" data-gallery="galeria-1" data-title="Foto 3" class="d-block">
+        <img class="img-fluid" src="https://via.placeholder.com/600x400" alt="Foto 3">
+      </a>
     </div>
   </div>
 </div>
-<main>
-    <!-- Contenido principal -->
-    <div class="container my-5">
-        <h1>Bienvenidos a mi página de fotografía</h1>
-        <p>En esta página encontrarás mi trabajo como fotógrafo profesional. Me especializo en retratos, fotografía de paisajes y eventos especiales. Espero que disfrutes de mi galería y que te animes a contactarme para trabajar juntos.</p>
-    </div>
-</main>
-@endsection
-@section('styles')
-<style>
-    #imagen{
-        background-size: cover;
-        background-position: center;
-    }
-</style>
+
+
+
 @endsection

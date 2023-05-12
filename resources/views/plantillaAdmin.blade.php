@@ -14,7 +14,7 @@
             <a class="dropdown-toggler" onclick="toggleSidebar()">
                 <span class="navbar-toggler-icon" style="background-color: #333"></span>
             </a>   
-			<a class="navbar-brand" href="#">Panel de Administración</a>
+			<a class="navbar-brand">Panel de Administración</a>
 		</div>
 	</nav>
 

@@ -8,7 +8,6 @@
 		<div class="settings_btn">
 			<i class="fas fa-cog"></i>
 		</div>
-
 		<div class="profile_wrap">
 			<div class="profile_img">
 				<img src="{{ asset('../img/profile.png') }}" alt="profile_pic">
@@ -110,7 +109,6 @@
 </div>
 
 <!-- MODAL BORRADO -->
-
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
