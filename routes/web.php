@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PerfilController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','App\\Http\\Controllers\\InicioController@index')->name('inicio');
 
 // Controller Resources
-Route::resource('perfil', UserController::class); 
+Route::resource('perfil', PerfilController::class); 
 Route::resource('inicio', InicioController::class);
 Route::resource('admin', AdminController::class);
+Route::resource('user', UserController::class);
 
 // User Routes
 Route::put('/perfil/password/{id}', [UserController::class, 'updatePass'])->name('updatePassword');

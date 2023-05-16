@@ -7,6 +7,7 @@
 	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/bootstrap/latest/js/bootstrap.min.js"></script>
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.png') }}">
 </head>
 <body>
 	<nav class="navbar navbar-dark bg-dark fixed-top">
@@ -27,11 +28,18 @@
 				<a class="nav-link" href="#">Configuración</a>
 			</li>
 		</ul>
-        <button id="logout-btn" class="btn btn-danger">Cerrar Sesión</button>
+        <a id="logout-btn" class="btn btn-danger" href="{{route('inicio.index')}}">Salir</a>
 	</div>
 
 @yield('contenido')
-
+<script>
+  function toggleSidebar() {
+    var sidebar = document.getElementById("sidebar");
+    var content = document.getElementById("content");
+    sidebar.classList.toggle("active");
+    content.classList.toggle("active");
+  }
+</script>
 @yield('script')
 </body>
 </html>

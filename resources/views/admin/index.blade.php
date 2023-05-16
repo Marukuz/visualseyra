@@ -34,7 +34,7 @@
         <td>{{$user->email}}</td>
         <td>{{$user->telefono}}</td>
         <td>
-          <button class="btn btn-warning" data-id="{{$user->id}}">Modificar</button>
+          <a class="btn btn-warning" href="{{ route('user.edit',$user) }}" >Modificar</a>
           <button class="btn btn-danger delete-user" data-id="{{$user->id}}">Eliminar</button>
         </td>
       </tr>
@@ -112,13 +112,6 @@
 @endsection
 @section('script')
 <script>
-  function toggleSidebar() {
-    var sidebar = document.getElementById("sidebar");
-    var content = document.getElementById("content");
-    sidebar.classList.toggle("active");
-    content.classList.toggle("active");
-  }
-
   $(function() {
     $('.delete-user').click(function() {
       var userId = $(this).data('id');

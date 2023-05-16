@@ -8,6 +8,7 @@
 	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/bootstrap/latest/js/bootstrap.min.js"></script>
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.png') }}">
 </head>
 
 @yield('contenido')
