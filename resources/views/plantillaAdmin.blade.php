@@ -25,6 +25,9 @@
 				<a class="nav-link" href="{{ route('admin.index') }}">Gestion de Usuarios</a>
 			</li>
 			<li class="nav-item">
+				<a class="nav-link" href="{{ route('posts.index') }}">Gestion de Noticias</a>
+			</li>
+			<li class="nav-item">
 				<a class="nav-link" href="#">Configuración</a>
 			</li>
 		</ul>

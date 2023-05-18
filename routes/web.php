@@ -4,6 +4,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\AdminPostController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +27,14 @@ Route::resource('perfil', PerfilController::class);
 Route::resource('inicio', InicioController::class);
 Route::resource('admin', AdminController::class);
 Route::resource('user', UserController::class);
+Route::resource('posts', AdminPostController::class);
+
+// Posts routes
+Route::get('/post', [PostController::class, 'home'])->name('posts.home');
+Route::get('/post/{slug}', [PostController::class, 'detail'])->name('posts.detail');
+
+// Comments routes
+Route::post('/comment', [CommentController::class, 'store'])->name('comments.store');
 
 // User Routes
 Route::put('/perfil/password/{id}', [UserController::class, 'updatePass'])->name('updatePassword');
