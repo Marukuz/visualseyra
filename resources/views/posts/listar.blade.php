@@ -8,8 +8,10 @@
             <a class="navbar-brand">Noticias</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link add-user">Añadir Usuario</a>
+                    <li>
+                        <a class="hover:text-blue-600 nav-link" href="{{ route('posts.create') }}" title="Admin">
+                            Nueva Noticia
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -38,10 +40,10 @@
                     <div class="text-green-500">Published</div>
                     @endif
                 </td>
-                <td>
-                    <a class="inline-block px-4 py-1 bg-blue-500 text-white rounded mr-2 hover:bg-blue-800" href="{{ route('posts.edit', $post) }}" title="Edit">Edit</a>
+                <td class="text-center">
+                    <a class="inline-block px-4 py-1 bg-blue-500 text-white rounded mr-2 hover:bg-blue-800 btn btn-warning" href="{{ route('posts.edit', $post) }}" title="Edit">Editar</a>
 
-                    <a class="inline-block px-4 py-1 bg-red-500 text-white rounded mr-2 hover:bg-red-800 delete-post" href="{{ route('posts.destroy', $post) }}" title="Delete" data-id="{{$post->id}}">Delete</a>
+                    <a class="inline-block px-4 py-1 bg-red-500 text-white rounded mr-2 hover:bg-red-800 delete-post btn btn-danger" href="{{ route('posts.destroy', $post) }}" title="Delete" data-id="{{$post->id}}">Eliminar</a>
                     <form id="posts.destroy-form-{{$post->id}}" action="{{ route('posts.destroy', $post) }}" method="POST" class="hidden">
                         {{ csrf_field() }}
                         @method('DELETE')
