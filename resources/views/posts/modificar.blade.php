@@ -18,25 +18,31 @@
     </nav>
     <div class="row justify-content-center mt-3">
         <div class="col-lg-7">
-            <form action="{{ route('posts.store') }}" method="post">
+            <form action="{{ route('posts.update', $post) }}" method="post">
                 @csrf
-                <h1 class="text-center mt-2">Crear Noticia</h1>
+                @method('PUT')
+                <h1 class="text-center mt-2">Modificar Noticia</h1>
                 <br>
                 <div class="mb-12">
-                    <label class="">Titulo de la noticia:</label><br>
-                    <input style="width: 748px;" class="border rounded focus:outline-none focus:shadow-outline p-2 mb-4" type="text" name="title" value="{{ old('title') }}" placeholder="Escribe el titulo de la noticia">
+                    <label>Titulo de la noticia:</label><br>
+                    <input style="width: 748px;" class="border rounded focus:outline-none focus:shadow-outline p-2 mb-4" type="text" name="title" value="{{ $post->title }}">
                 </div>
                 <div class="mb-12">
-                    <label for="">Contenido:</label>
-                    <textarea class="ckeditor border rounded focus:outline-none focus:shadow-outline p-2 mb-4" name="body"></textarea>
+                    <label>Contenido:</label>
+                    <textarea class="ckeditor border rounded focus:outline-none focus:shadow-outline p-2 mb-4" name="body">{!! html_entity_decode(htmlspecialchars($post->body)) !!}</textarea>
                 </div>
                 <div class="mb-12">
+                    Is draft?
                     <input type="hidden" name="is_draft" value="0">
-                    <input type="checkbox" name="is_draft" value="1"> Is draft?
+                    @if (!$post->is_draft)
+                    <input type="checkbox" name="is_draft" value="1">
+                @else
+                    <input type="checkbox" name="is_draft" value="1" checked>
+                @endif
                 </div>
                 <div class="mb-12 text-center">
                     <a class="btn btn-warning" href="{{ route('posts.index') }}">Cancelar</a>
-                    <button class="btn btn-success" type="submit">Crear</button>
+                    <button class="btn btn-success" type="submit">Modificar</button>
                 </div>
             </form>
         </div>

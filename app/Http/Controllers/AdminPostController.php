@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Comment;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\PostRequest;
+
 
 class AdminPostController extends Controller
 {
@@ -38,9 +42,26 @@ class AdminPostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         //
+        
+        $datos = $request->validate([
+            'title'=>'required',
+            'body'=>'required',
+            'is_draft'=>'required'
+        ]);
+
+        $user = Auth::user();
+
+        $post = new Post;
+        $post->title = $datos['title'];
+        $post->body = $datos['body'];
+        $post->is_draft = $datos['is_draft'];
+        $post->user()->associate($user);
+        $post->save();
+
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -63,6 +84,10 @@ class AdminPostController extends Controller
     public function edit($id)
     {
         //
+        $post = Post::find($id);
+        return view('posts/modificar', [
+            'post' => $post
+        ]);
     }
 
     /**
@@ -75,6 +100,21 @@ class AdminPostController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $datos = $request->validate([
+            'title'=>'required',
+            'body'=>'required'
+        ]);
+
+        $post = Post::find($id);
+
+        $post->title = $datos['title'];
+        $post->body = $datos['body'];
+        $post->is_draft = $request->input('is_draft');
+
+        $post->save();
+
+        return redirect()->route('posts.index');
+
     }
 
     /**
@@ -86,5 +126,12 @@ class AdminPostController extends Controller
     public function destroy($id)
     {
         //
+        $comments = Comment::where('post_id',$id)->get();
+        $post = Post::find($id);
+        foreach($comments as $comment){
+            $comment->delete();
+        }
+        $post->delete();
+        
     }
 }

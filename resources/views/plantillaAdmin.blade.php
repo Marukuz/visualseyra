@@ -7,6 +7,7 @@
 	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/bootstrap/latest/js/bootstrap.min.js"></script>
+	<script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.png') }}">
 </head>
 <body>
@@ -42,6 +43,11 @@
     sidebar.classList.toggle("active");
     content.classList.toggle("active");
   }
+
+  $(document).ready(function () {
+        $('.ckeditor').ckeditor();
+    });
+	
 </script>
 @yield('script')
 </body>

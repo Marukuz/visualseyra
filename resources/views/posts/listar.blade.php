@@ -43,11 +43,7 @@
                 <td class="text-center">
                     <a class="inline-block px-4 py-1 bg-blue-500 text-white rounded mr-2 hover:bg-blue-800 btn btn-warning" href="{{ route('posts.edit', $post) }}" title="Edit">Editar</a>
 
-                    <a class="inline-block px-4 py-1 bg-red-500 text-white rounded mr-2 hover:bg-red-800 delete-post btn btn-danger" href="{{ route('posts.destroy', $post) }}" title="Delete" data-id="{{$post->id}}">Eliminar</a>
-                    <form id="posts.destroy-form-{{$post->id}}" action="{{ route('posts.destroy', $post) }}" method="POST" class="hidden">
-                        {{ csrf_field() }}
-                        @method('DELETE')
-                    </form>
+                    <a class="inline-block px-4 py-1 bg-red-500 text-white rounded mr-2 hover:bg-red-800 delete-post btn btn-danger" title="Delete" data-post-id="{{$post->id}}">Eliminar</a>
                 </td>
             <tr>
             @endforeach
@@ -58,20 +54,46 @@
 
 </div>
 </div>
+
+<!-- MODAL BORRADO -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Confirmar Borrado</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ¿Estás seguro que quieres borrar la noticia seleccionada?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-danger" id="delete-post-button">Eliminar</button>
+        </div>
+      </div>
+    </div>
+</div>
+
 <script>
-    var delete_post_action = document.getElementsByClassName("delete-post");
-
-    var deleteAction = function(e) {
-        event.preventDefault();
-        var id = this.dataset.id;
-        if (confirm('Are you sure?')) {
-            document.getElementById('posts.destroy-form-' + id).submit();
-        }
-        return false;
-    }
-
-    for (var i = 0; i < delete_post_action.length; i++) {
-        delete_post_action[i].addEventListener('click', deleteAction, false);
-    }
+    $(function() {
+		$('.delete-post').click(function() {
+			var postId = $(this).data('post-id');
+			$('#deleteModal').modal('show');
+			$('#delete-post-button').click(function() {
+				$.ajax({
+					url: '/posts/' + postId,
+					method: 'DELETE',
+					data: {
+						_token: '{{ csrf_token() }}'
+					},
+					success: function() {
+						window.location.href = '{{ route('posts.index') }}';
+					}
+				});
+			});
+		});
+	});
 </script>
 @endsection

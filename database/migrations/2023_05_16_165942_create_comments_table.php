@@ -20,7 +20,8 @@ class CreateCommentsTable extends Migration
             $table->foreignId('post_id')->constrained();
 
             $table->text('comment');
-
+            
+            $table->softDeletes();
             $table->timestamps();
         });
     }

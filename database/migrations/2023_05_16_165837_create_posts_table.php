@@ -22,7 +22,8 @@ class CreatePostsTable extends Migration
             $table->string('slug')->unique();
             $table->mediumText('body');
             $table->boolean('is_draft')->default(false);
-
+            
+            $table->softDeletes();
             $table->timestamps();
         });
     }

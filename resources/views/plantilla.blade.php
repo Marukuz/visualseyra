@@ -11,6 +11,18 @@
 	<script src="https://cdn.jsdelivr.net/bootstrap/latest/js/bootstrap.min.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.png') }}">
 </head>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    footer {
+        background-color: #f5f5f5;
+        padding: 20px;
+        text-align: center;
+    }
+</style>
 @yield('styles')
 
 <body>
@@ -25,16 +37,10 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                            <a class="nav-link active" aria-current="page" href="{{route('inicio.index')}}">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('posts.home')}}">Noticias</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Sobre mí</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contacto</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
