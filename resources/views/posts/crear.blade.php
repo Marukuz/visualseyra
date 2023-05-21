@@ -23,11 +23,19 @@
                 <h1 class="text-center mt-2">Crear Noticia</h1>
                 <br>
                 <div class="mb-12">
-                    <label class="">Titulo de la noticia:</label><br>
+                    <label>Titulo de la noticia:
+                        @error('title') 
+                        <span class="text-danger">{{$message}}</span>
+                        @enderror    
+                    </label><br>
                     <input style="width: 748px;" class="border rounded focus:outline-none focus:shadow-outline p-2 mb-4" type="text" name="title" value="{{ old('title') }}" placeholder="Escribe el titulo de la noticia">
                 </div>
                 <div class="mb-12">
-                    <label for="">Contenido:</label>
+                    <label>Contenido:
+                        @error('body') 
+                        <span class="text-danger">{{$message}}</span>
+                        @enderror  
+                    </label>
                     <textarea class="ckeditor border rounded focus:outline-none focus:shadow-outline p-2 mb-4" name="body"></textarea>
                 </div>
                 <div class="mb-12">

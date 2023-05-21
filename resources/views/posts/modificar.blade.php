@@ -24,11 +24,19 @@
                 <h1 class="text-center mt-2">Modificar Noticia</h1>
                 <br>
                 <div class="mb-12">
-                    <label>Titulo de la noticia:</label><br>
+                    <label>Titulo de la noticia:    
+                        @error('title') 
+                        <span class="text-danger">{{$message}}</span>
+                        @enderror    
+                    </label><br>
                     <input style="width: 748px;" class="border rounded focus:outline-none focus:shadow-outline p-2 mb-4" type="text" name="title" value="{{ $post->title }}">
                 </div>
                 <div class="mb-12">
-                    <label>Contenido:</label>
+                    <label>Contenido:
+                        @error('body') 
+                        <span class="text-danger">{{$message}}</span>
+                        @enderror 
+                    </label>
                     <textarea class="ckeditor border rounded focus:outline-none focus:shadow-outline p-2 mb-4" name="body">{!! html_entity_decode(htmlspecialchars($post->body)) !!}</textarea>
                 </div>
                 <div class="mb-12">

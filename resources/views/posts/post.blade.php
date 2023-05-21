@@ -22,9 +22,9 @@
         @else
         <form action="{{ route('comments.store') }}" method="post">
             @csrf
-            <textarea class="w-full h-28 resize-none border rounded focus:outline-none focus:shadow-outline p-2" name="comment" placeholder="Escribe aqui un comentario" required>{{ old('comment') }}</textarea>
+            <textarea class="w-full h-28 resize-none border rounded focus:outline-none focus:shadow-outline p-2" name="comment" placeholder="Escribe aqui un comentario" required cols="50">{{ old('comment') }}</textarea>
             <input type="hidden" name="post_id" value="{{$post->id}}">
-            <input type="submit" value="SEND" class="px-4 py-2 bg-orange-300 cursor-pointer hover:bg-orange-500 font-bold w-full border rounded border-orange-300 hover:border-orange-500 text-white">
+            <input type="submit" value="Enviar" class="btn btn-success mb-5">
             @if (session('status'))
                 <div class="w-full bg-green-500 p-2 text-center my-2 text-white">
                     {{ session('status') }}

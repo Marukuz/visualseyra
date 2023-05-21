@@ -39,9 +39,9 @@ class PostRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => 'A title is required',
-            'title.max' => 'A title cannot exceed 255 characters',
-            'body.required' => 'You must sent a body',
+            'title.required' => 'El titulo no puede estar vacio',
+            'title.max' => 'El titulo no puede exceder los 255 caracteres',
+            'body.required' => 'El contenido no puede estar vacio',
             'is_draft.required' => 'You must sent if is draft or not',
         ];
     }

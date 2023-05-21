@@ -18,7 +18,6 @@ class AdminPostController extends Controller
      */
     public function index()
     {
-        //
         $posts = Post::orderBy('created_at', 'desc')->paginate(10);
         return view('posts/listar', [
             'posts' => $posts
@@ -32,28 +31,24 @@ class AdminPostController extends Controller
      */
     public function create()
     {
-        //
         return view('posts/crear');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\PostRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(PostRequest $request)
     {
-        //
-        
         $datos = $request->validate([
             'title'=>'required',
             'body'=>'required',
             'is_draft'=>'required'
         ]);
-
+        
         $user = Auth::user();
-
         $post = new Post;
         $post->title = $datos['title'];
         $post->body = $datos['body'];
@@ -83,7 +78,6 @@ class AdminPostController extends Controller
      */
     public function edit($id)
     {
-        //
         $post = Post::find($id);
         return view('posts/modificar', [
             'post' => $post
@@ -93,13 +87,12 @@ class AdminPostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\PostRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
-        //
         $datos = $request->validate([
             'title'=>'required',
             'body'=>'required'
@@ -125,7 +118,6 @@ class AdminPostController extends Controller
      */
     public function destroy($id)
     {
-        //
         $comments = Comment::where('post_id',$id)->get();
         $post = Post::find($id);
         foreach($comments as $comment){
