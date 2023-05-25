@@ -10,6 +10,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/bootstrap/latest/js/bootstrap.min.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.png') }}">
+    @yield('css')
 </head>
 <style>
     body {
@@ -41,6 +42,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('posts.home')}}">Noticias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('servicio.index')}}">Servicios</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">

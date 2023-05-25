@@ -37,38 +37,20 @@
   <div class="container my-5">
     <h2 class="text-center mb-5">Nuestros servicios</h2>
     <div class="row">
-      <div class="col-md-3 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Servicio 1">
-          <div class="card-body">
-            <h3 class="card-title font-weight-bold">Fotografía</h3>
-            <p class="card-text">Capturamos tus mejores momentos con nuestras cámaras de alta resolución.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Servicio 2">
-          <div class="card-body">
-            <h3 class="card-title font-weight-bold">Videografía</h3>
-            <p class="card-text">Creamos videos de alta calidad que te permiten revivir tus momentos especiales.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Servicio 3">
-          <div class="card-body">
-            <h3 class="card-title font-weight-bold">Fotolibros</h3>
-            <p class="card-text">Creamos álbumes de fotos personalizados con tus mejores recuerdos.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
+      <div class="col-md-6 mb-4">
         <div class="card h-100">
           <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Servicio 3">
           <div class="card-body">
             <h3 class="card-title font-weight-bold">Bodas</h3>
+            <p class="card-text">Creamos álbumes de fotos personalizados con tus mejores recuerdos.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Servicio 3">
+          <div class="card-body">
+            <h3 class="card-title font-weight-bold">Comuniones</h3>
             <p class="card-text">Creamos álbumes de fotos personalizados con tus mejores recuerdos.</p>
           </div>
         </div>

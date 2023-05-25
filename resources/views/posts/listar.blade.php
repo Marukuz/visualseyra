@@ -35,9 +35,9 @@
                 <td>{{ $post->user->name }}</td>
                 <td>
                     @if ($post->is_draft)
-                    <div class="text-red-500">In draft</div>
+                    <div class="text-red-500">Borrador</div>
                     @else
-                    <div class="text-green-500">Published</div>
+                    <div class="text-green-500">Publicado</div>
                     @endif
                 </td>
                 <td class="text-center">

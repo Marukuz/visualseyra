@@ -7,6 +7,7 @@ use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ServiciosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,7 @@ Route::resource('inicio', InicioController::class);
 Route::resource('admin', AdminController::class);
 Route::resource('user', UserController::class);
 Route::resource('posts', AdminPostController::class);
+Route::resource('servicio', ServiciosController::class); 
 
 // Posts routes
 Route::get('/post', [PostController::class, 'home'])->name('posts.home');
