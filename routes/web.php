@@ -7,7 +7,8 @@ use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\ServiciosController;
+use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\PackController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +30,8 @@ Route::resource('inicio', InicioController::class);
 Route::resource('admin', AdminController::class);
 Route::resource('user', UserController::class);
 Route::resource('posts', AdminPostController::class);
-Route::resource('servicio', ServiciosController::class); 
+Route::resource('servicio', ServicioController::class); 
+Route::resource('pack', PackController::class); 
 
 // Posts routes
 Route::get('/post', [PostController::class, 'home'])->name('posts.home');
@@ -37,6 +39,9 @@ Route::get('/post/{slug}', [PostController::class, 'detail'])->name('posts.detai
 
 // Comments routes
 Route::post('/comment', [CommentController::class, 'store'])->name('comments.store');
+
+// Servicios routes
+Route::get('/servicios',[ServicioController::class, 'indexAdmin'])->name('servicio.listar');
 
 // User Routes
 Route::put('/perfil/password/{id}', [UserController::class, 'updatePass'])->name('updatePassword');

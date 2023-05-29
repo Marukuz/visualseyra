@@ -29,6 +29,12 @@
 				<a class="nav-link" href="{{ route('posts.index') }}">Gestion de Noticias</a>
 			</li>
 			<li class="nav-item">
+				<a class="nav-link" href="{{ route('servicio.listar') }}">Gestion de Servicios</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{ route('pack.index') }}">Gestion de Packs</a>
+			</li>
+			<li class="nav-item">
 				<a class="nav-link" href="#">Configuración</a>
 			</li>
 		</ul>
