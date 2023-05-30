@@ -34,7 +34,8 @@
                     <div class="col-md-4 mb-4">
                         <article class="text-left p-2 border border-gray-300">
                             <h3 class="py-4 text-xl">{{$post->title}}</h3>
-                            <p>{!! html_entity_decode(htmlspecialchars($post->get_limit_body)) !!}<a class="font-bold text-blue-600 no-underline hover:underline" href="{{ route('posts.detail', $post->slug) }}">Read more</a></p>
+                            <p>{!! html_entity_decode(htmlspecialchars($post->get_limit_body)) !!}</p><br>
+                            <a class="font-bold text-blue-600 no-underline hover:underline" href="{{ route('posts.detail', $post->slug) }}">Read more</a>
                         </article>
                     </div>
                 @endforeach

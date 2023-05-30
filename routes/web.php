@@ -9,7 +9,10 @@ use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\PackController;
+use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,5 +48,33 @@ Route::get('/servicios',[ServicioController::class, 'indexAdmin'])->name('servic
 
 // User Routes
 Route::put('/perfil/password/{id}', [UserController::class, 'updatePass'])->name('updatePassword');
+
+// Google Routes
+ 
+Route::get('/login-google', function () {
+    return Socialite::driver('google')->redirect();
+})->name('google');
+ 
+Route::get('/google-callback', function () {
+    $user = Socialite::driver('google')->user();
+    
+    $userExists = User::where('google_id',$user->id)->where('external_auth','google')->exists();
+
+    if($userExists){
+        $user = User::where('google_id', $user->id)->where('external_auth', 'google')->first();
+        Auth::login($user);
+    }else{
+        $userNew = User::create([
+           'name' => $user->name,
+           'email' => $user->email,
+           'avatar' => $user->avatar,
+           'google_id' => $user->id,
+           'external_auth' => 'google',
+           'tipo' => 'Usuario'
+        ]);
+        Auth::login($userNew);
+    }
+    return redirect('/');
+});
 
 require __DIR__.'/auth.php';

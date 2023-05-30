@@ -10,7 +10,7 @@
 		</div>
 		<div class="profile_wrap">
 			<div class="profile_img">
-				<img src="{{ asset('../img/profile.png') }}" alt="profile_pic">
+				<img src="{{ Auth::user()->avatar ? Auth::user()->avatar : asset('img/profile.png') }}" alt="profile_pic">
 				<p class="name">{{ Auth::user()->name }}</p>
 				<p class="place">
 				</p>
@@ -21,12 +21,9 @@
 					<div class="title">Fecha de creacion</div>
 					<div class="num">{{ Auth::user()->created_at }}</div>
 				</div>
-			</div>
+			</div><br>
 			<div class="btn btn-primary btn-sm update-password" data-user-id="{{ Auth::user()->id }}">
 				Cambiar Contraseña
-			</div>
-			<div class="btn btn-danger btn-sm delete-user mt-4 mb-1" data-user-id="{{ Auth::user()->id }}">
-				Eliminar cuenta
 			</div>
 		</div>
 	</div>

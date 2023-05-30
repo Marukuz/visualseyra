@@ -33,7 +33,7 @@
                 <td>{{ $pack->servicio->nombre }}</td>
                 <td>{{ $pack->nombre}}</td>
                 <td>{{ $pack->contenido}}</td>
-                <td>{{ $pack->precio}}</td>
+                <td>{{ $pack->precio}}€</td>
 
                 <td class="text-center">
                     <a class="inline-block px-4 py-1 bg-blue-500 text-white rounded mr-2 hover:bg-blue-800 btn btn-warning" href="{{ route('pack.edit', $pack) }}" title="Edit">Editar</a>

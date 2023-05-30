@@ -39,19 +39,24 @@
     <div class="row">
       <div class="col-md-6 mb-4">
         <div class="card h-100">
-          <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Servicio 3">
+          <img class="card-img-top" src="{{ asset('../img/bodas.jpg') }}" alt="Servicio 3">
           <div class="card-body">
             <h3 class="card-title font-weight-bold">Bodas</h3>
-            <p class="card-text">Creamos álbumes de fotos personalizados con tus mejores recuerdos.</p>
+            <p class="card-text">¡Celebra el amor con nuestro servicio de bodas excepcional! En Visualseyra, entendemos que tu boda es uno de los momentos más especiales de tu vida, por eso nos dedicamos a hacer de cada detalle un recuerdo inolvidable.</p>
+            <br>
+            <a class="btn btn-primary" href="{{route('servicio.index')}}">Detalles</a>
           </div>
         </div>
       </div>
       <div class="col-md-6 mb-4">
         <div class="card h-100">
-          <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Servicio 3">
+          <img class="card-img-top" src="{{ asset('../img/comuniones.jpg') }}" alt="Servicio 3">
           <div class="card-body">
             <h3 class="card-title font-weight-bold">Comuniones</h3>
-            <p class="card-text">Creamos álbumes de fotos personalizados con tus mejores recuerdos.</p>
+            <p class="card-text">
+              ¡Celebra un día especial con nuestro servicio de comuniones inolvidables! En Visualseyra, comprendemos que la Primera Comunión de tu hijo/a es un momento único y significativo en su vida, por eso nos dedicamos a hacer de cada detalle una experiencia memorable
+            </p>
+            <a class="btn btn-primary" href="{{route('servicio.index')}}">Detalles</a>
           </div>
         </div>
       </div>

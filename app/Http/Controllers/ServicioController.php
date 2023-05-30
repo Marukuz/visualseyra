@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Service;
+use App\Models\Pack;
+use App\Models\User;
 
 class ServicioController extends Controller
 {
@@ -15,7 +17,14 @@ class ServicioController extends Controller
     public function index()
     {
         //
-        return view('servicios/index');
+        $packsb = Pack::where('servicio_id','1')->get();
+        $packsc = Pack::where('servicio_id','2')->get();
+        $servicios = Service::all();
+        return view('servicios/index',[
+            'packsb' => $packsb,
+            'packsc' => $packsc,
+            'servicios' => $servicios,
+        ]);
     }
 
     public function indexAdmin(){

@@ -55,10 +55,11 @@
                         @else
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Bienvenido {{ Auth::user()->name }}                            
+                            Bienvenid@ {{ Auth::user()->name }}                            
                             </button>
                             <ul class="dropdown-menu text-center">
                                 <li><a class="dropdown-item" href="{{ url('perfil') }}">Perfil</a></li>
+                                <li><a class="dropdown-item" href="{{ url('perfil') }}">Citas</a></li>
                                 @if(Auth::user()->tipo == "Administrador")
                                 <li><a class="dropdown-item" href="{{ url('admin') }}">Admin</a></li>
                                 @endif

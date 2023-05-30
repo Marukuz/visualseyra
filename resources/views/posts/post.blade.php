@@ -9,11 +9,14 @@
 </section>
 <article class="w-full py-8">
     <div class="flex justify-center">
-        <div class="max-w-4xl text-justify">
-            {!! html_entity_decode(htmlspecialchars($post->body)) !!}
+        <div class="container">
+            <div class="max-w-4xl text-justify">
+                {!! html_entity_decode(htmlspecialchars($post->body)) !!}
+            </div>
         </div>
     </div>
 </article>
+<br><br><br>
 <section class="w-full py-8">
     <div class="max-w-4xl flex-row justify-start p-3 text-left ml-auto mr-auto border rounded shadow-sm bg-gray-50">
         <h3 class="py-4 text-2xl">Comentarios</h3>

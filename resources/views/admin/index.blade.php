@@ -22,6 +22,7 @@
         <th scope="col">Nombre</th>
         <th scope="col">Correo</th>
         <th scope="col">Teléfono</th>
+        <th scope="col">Tipo</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
@@ -33,6 +34,7 @@
         <td>{{$user->name}}</td>
         <td>{{$user->email}}</td>
         <td>{{$user->telefono}}</td>
+        <td>{{$user->tipo}}</td>
         <td>
           <a class="btn btn-warning" href="{{ route('user.edit',$user) }}" >Modificar</a>
           <button class="btn btn-danger delete-user" data-id="{{$user->id}}">Eliminar</button>
