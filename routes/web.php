@@ -8,6 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\PackController;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Route;
@@ -34,7 +35,12 @@ Route::resource('admin', AdminController::class);
 Route::resource('user', UserController::class);
 Route::resource('posts', AdminPostController::class);
 Route::resource('servicio', ServicioController::class); 
+Route::resource('agenda', EventController::class); 
 Route::resource('pack', PackController::class); 
+
+// Agenda routes
+
+Route::post('/agenda/editar/{id}', [EventController::class,'edit']);
 
 // Posts routes
 Route::get('/post', [PostController::class, 'home'])->name('posts.home');

@@ -8,7 +8,9 @@
 	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/bootstrap/latest/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 	<script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+	<script src="{{ asset('js/agenda.js') }}"></script>
 	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.png') }}">
 	<style>
 		html,
@@ -93,7 +95,7 @@
 					<a class="nav-link" href="{{ route('pack.index') }}">Gestion de Packs</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{{ route('pack.index') }}">Gestion de Citas</a>
+					<a class="nav-link" href="{{ route('agenda.index') }}">Gestion de Citas</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Configuración</a>
@@ -101,7 +103,6 @@
 			</ul>
 			<a id="logout-btn" class="btn btn-danger" href="{{route('inicio.index')}}">Salir</a>
 		</div>
-
 		<div id="content">
 			@yield('contenido')
 		</div>
