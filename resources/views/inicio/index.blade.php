@@ -5,7 +5,7 @@
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="{{ asset('../img/carrousel1.jpg') }}" alt="Videografía y Fotografía">
+          <img class="d-block w-100" src="{{ asset('img/carrousel1.jpg') }}" alt="Videografía y Fotografía">
           <div class="carousel-caption d-md-block">
             <h1 class="display-3 font-weight-bold text-light mb-3">Videografía y Fotografía</h1>
             <p class="lead text-light mb-5">Capturamos tus mejores momentos</p>
@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="{{ asset('../img/carrousel2.jpg') }}" alt="Videografía y Fotografía">
+          <img class="d-block w-100" src="{{ asset('img/carrousel2.jpg') }}" alt="Videografía y Fotografía">
           <div class="carousel-caption d-md-block">
             <h1 class="display-3 font-weight-bold text-light mb-3">Videografía y Fotografía</h1>
             <p class="lead text-light mb-5">Capturamos tus mejores momentos</p>
@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="{{ asset('../img/carrousel3.jpg') }}" alt="Videografía y Fotografía">
+          <img class="d-block w-100" src="{{ asset('img/carrousel3.jpg') }}" alt="Videografía y Fotografía">
           <div class="carousel-caption d-md-block">
             <h1 class="display-3 font-weight-bold text-light mb-3">Videografía y Fotografía</h1>
             <p class="lead text-light mb-5">Capturamos tus mejores momentos</p>
@@ -39,7 +39,7 @@
     <div class="row">
       <div class="col-md-6 mb-4">
         <div class="card h-100">
-          <img class="card-img-top" src="{{ asset('../img/bodas.jpg') }}" alt="Servicio 3">
+          <img class="card-img-top" src="{{ asset('img/bodas.jpg') }}" alt="Servicio 3">
           <div class="card-body">
             <h3 class="card-title font-weight-bold">Bodas</h3>
             <p class="card-text">¡Celebra el amor con nuestro servicio de bodas excepcional! En Visualseyra, entendemos que tu boda es uno de los momentos más especiales de tu vida, por eso nos dedicamos a hacer de cada detalle un recuerdo inolvidable.</p>
@@ -50,7 +50,7 @@
       </div>
       <div class="col-md-6 mb-4">
         <div class="card h-100">
-          <img class="card-img-top" src="{{ asset('../img/comuniones.jpg') }}" alt="Servicio 3">
+          <img class="card-img-top" src="{{ asset('img/comuniones.jpg') }}" alt="Servicio 3">
           <div class="card-body">
             <h3 class="card-title font-weight-bold">Comuniones</h3>
             <p class="card-text">

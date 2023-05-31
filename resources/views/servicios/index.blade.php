@@ -11,7 +11,7 @@
   <div class="row">
     <div class="col-md-6">
       <div class="card">
-        <img src="{{ asset('../img/bodas.jpg') }}" class="card-img-top" alt="Servicio 1">
+        <img src="{{ asset('img/bodas.jpg') }}" class="card-img-top" alt="Servicio 1">
         <div class="card-body">
           <h5 class="card-title">Bodas</h5>
           <p class="card-text">¡Celebra el amor con nuestro servicio de bodas excepcional! En Visualseyra, entendemos que tu boda es uno de los momentos más especiales de tu vida, por eso nos dedicamos a hacer de cada detalle un recuerdo inolvidable.</p>
@@ -23,7 +23,7 @@
 
     <div class="col-md-6">
       <div class="card">
-        <img src="{{ asset('../img/comuniones.jpg') }}" class="card-img-top" alt="Servicio 2">
+        <img src="{{ asset('img/comuniones.jpg') }}" class="card-img-top" alt="Servicio 2">
         <div class="card-body">
           <h5 class="card-title">Comuniones</h5>
           <p class="card-text">
@@ -44,7 +44,7 @@
       <div class="card mt-5 mb-5">
         <div class="row">
           <div class="col-md-4">
-            <img src="{{ asset('../img/bodas.jpg') }}" class="card-img" alt="Servicio 1">
+            <img src="{{ asset('img/bodas.jpg') }}" class="card-img" alt="Servicio 1">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -79,7 +79,7 @@
           </div>
           <div class="modal-body">
             <!-- Contenido del modal -->
-            <img src="{{ asset('../img/bodas.jpg') }}" style="height:200px; width:300px;">
+            <img src="{{ asset('img/bodas.jpg') }}" style="height:200px; width:300px;">
             <p>Aquí puedes agregar todo el contenido que desees para tu modal grande.</p>
           </div>
           <div class="modal-footer">

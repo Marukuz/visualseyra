@@ -1,6 +1,6 @@
 @extends('plantillaAdmin')
 @section('contenido')
-
+<br><br><br><br>
 <div class="container mt-5">
     <div id="agenda">
 
@@ -33,7 +33,7 @@
 
                     <div class="form-group">
                       <label for="descripcion">Descripcion</label>
-                      <textarea class="form-control" name="descripcion" id="descripcion" rows="3"></textarea>
+                      <textarea class="form-control" name="descripcion" id="descripcion" rows="3" placeholder="Introduce una descripcion"></textarea>
                     </div>
 
                     <div class="form-group">

@@ -59,9 +59,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         dateClick: function (info) {
             formulario.reset();
-
             // Pasamos la fecha al formato tradicional DateTime
-            var startDate = moment(info.start);
+            var startDate = moment(info.dateStr);
             // Misma fecha pero con 2 horas más
             var endDate = moment(startDate).add(2, "hours");
 
