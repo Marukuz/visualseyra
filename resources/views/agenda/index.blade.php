@@ -17,20 +17,18 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
             </div>
-            <div class="modal-body" id="formularioEventos">
+            <div class="modal-body">
                 
-                <form action="">
+                <form action="" id="formularioEventos">
                     {!! csrf_field() !!}
                     <div class="form-group d-none">
                       <label for="id">ID:</label>
                       <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId" placeholder="">
-                      <small id="helpId" class="form-text text-muted">Help text</small>
                     </div>
 
                     <div class="form-group">
                       <label for="title">Titulo</label>
                       <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId" placeholder="Escribe el titulo del evento">
-                      <small id="helpId" class="form-text text-muted">Help text</small>
                     </div>
 
                     <div class="form-group">
@@ -39,15 +37,13 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="start">Start</label>
+                      <label for="start">Fecha Inicio</label>
                       <input type="datetime-local" class="form-control" name="start" id="start" aria-describedby="helpId" placeholder="">
-                      <small id="helpId" class="form-text text-muted">Help text</small>
                     </div>
 
                     <div class="form-group">
-                      <label for="end">End</label>
+                      <label for="end">Fecha Fin</label>
                       <input type="datetime-local" class="form-control" name="end" id="end" aria-describedby="helpId" placeholder="">
-                      <small id="helpId" class="form-text text-muted">Help text</small>
                     </div>
                 </form>
 

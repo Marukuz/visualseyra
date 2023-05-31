@@ -10,6 +10,7 @@
 	<script src="https://cdn.jsdelivr.net/bootstrap/latest/js/bootstrap.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 	<script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+	<script src="{{ asset('js/moment.js') }}"></script>
 	<script src="{{ asset('js/agenda.js') }}"></script>
 	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.png') }}">
 	<style>
