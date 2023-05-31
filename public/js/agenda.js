@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
         initialView: "dayGridMonth",
         locale: "esLocale",
         themeSystem: "bootstrap5",
-
+        height: 900,
+        editable: true,
         displayEventTime: false,
         selectable: true,
 
@@ -19,6 +20,42 @@ document.addEventListener("DOMContentLoaded", function () {
         },
 
         events: "/agenda/show",
+
+        eventDragStart: function(info) {
+            window.draggedEvent = info.event;
+          },
+          eventDrop: function(info) {
+            var draggedEvent = window.draggedEvent;
+            if (draggedEvent) {
+
+              var title = info.event.title;
+              var descripcion = info.event.extendedProps.descripcion;
+              var newStart = moment(info.event.start).format('YYYY-MM-DD HH:mm:ss');
+              var newEnd = moment(info.event.end).format('YYYY-MM-DD HH:mm:ss');
+        
+              $.ajax({
+                url:"/agenda/" + draggedEvent.id, 
+                method: 'PUT',
+                headers: {
+                    "X-CSRF-TOKEN": $('input[name="_token"]').val(),
+                },
+                data: {
+                  id: draggedEvent.id,
+                  title: title,
+                  descripcion: descripcion,
+                  start: newStart,
+                  end: newEnd,
+                },
+                success: function(response) {
+                  console.log('Evento actualizado en la base de datos');
+                },
+                error: function() {
+                  console.error('Error al actualizar el evento en la base de datos');
+                }
+              });
+              window.draggedEvent = null;
+            }
+        },
 
         dateClick: function (info) {
             formulario.reset();
@@ -31,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
             $('#btnGuardar').show();
             $('#btnModificar').hide();
             $('#btnEliminar').hide();
-            
+
             formulario.start.value = startDate.format("YYYY-MM-DD HH:mm:ss");
             formulario.end.value = endDate.format("YYYY-MM-DD HH:mm:ss");
             $("#evento").modal("show");
@@ -61,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         },
     });
-    calendar.setOption("locale", "es");
     calendar.render();
 
     document
