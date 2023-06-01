@@ -25,13 +25,21 @@
                 <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label>Nombre del pack:</label>
+                        <label>Nombre del pack:
+                            @error('nombre') 
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror  
+                        </label>
                         <input type="text" class="form-control" name="nombre" value="{{old('nombre')}}">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label>Precio:</label>
+                        <label>Precio:
+                            @error('precio') 
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror  
+                        </label>
                         <input type="text" class="form-control" name="precio" value="{{old('precio')}}">
                       </div>
                     </div>
@@ -40,7 +48,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Servicio:</label>
+                            <label>Servicio:
+                                @error('servicio_id') 
+                                <span class="text-danger">{{$message}}</span>
+                                @enderror  
+                            </label>
                             <select class="form-select" name="servicio_id">
                                 <option selected>{{ old('servicio_id') }}</option>
                                 @foreach($servicios as $servicio)
@@ -54,12 +66,27 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Descripcion:</label><br>
+                            <label>Contenido:
+                                @error('contenido') 
+                                <span class="text-danger">{{$message}}</span>
+                                @enderror      
+                            </label><br>
                             <textarea class="border rounded focus:outline-none focus:shadow-outline p-2 mb-4" name="contenido" rows="5" cols="127">{{old('contenido')}}</textarea>
                         </div>
                     </div>
                 </div>
-                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Imagen del Pack:
+                                @error('image') 
+                                <span class="text-danger">{{$message}}</span>
+                                @enderror      
+                            </label><br>
+                            <input type="file" class="form-control" name="image">
+                        </div>
+                    </div>
+                </div>
                 <div class="mb-12 text-center">
                     <a class="btn btn-warning" href="{{ route('pack.index') }}">Cancelar</a>
                     <button class="btn btn-success" type="submit">Crear</button>

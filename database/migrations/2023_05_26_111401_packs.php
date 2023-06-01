@@ -19,7 +19,6 @@ class Packs extends Migration
             $table->string('nombre');
             $table->text('contenido');
             $table->float('precio');
-            
             $table->softDeletes();
             $table->timestamps();
 

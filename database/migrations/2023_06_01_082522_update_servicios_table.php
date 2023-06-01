@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Servicios extends Migration
+class UpdateServiciosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class Servicios extends Migration
      */
     public function up()
     {
-        Schema::create('servicios', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->softDeletes();
-            $table->timestamps();
+        //
+        Schema::table('servicios',function (Blueprint $table){
+            $table->string('image')->nullable()->after('nombre');
         });
     }
-
- 
 
     /**
      * Reverse the migrations.
@@ -30,6 +26,6 @@ class Servicios extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('servicios');
+        //
     }
 }

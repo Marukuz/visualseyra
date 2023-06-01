@@ -23,7 +23,8 @@ body {
 }
 
 .navbar-primary {
-    margin-left: 79px; /* Ajusta el valor según tus necesidades */
+    transition: margin-left 0.5s ease; /* Aplica una transición suave */
+    margin-left: 78px; /* Ajusta el valor según tus necesidades */
 }
 
 .sidebar.close {

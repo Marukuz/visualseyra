@@ -50,7 +50,8 @@ class PackController extends Controller
             'nombre'=>'required',
             'contenido' =>'required',
             'servicio_id' => 'required',
-            'precio' => 'required'
+            'precio' => 'required',
+            'image' => 'required|image'
         ]);
         
         Pack::create($datos);

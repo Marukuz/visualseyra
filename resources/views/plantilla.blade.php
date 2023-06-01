@@ -14,15 +14,31 @@
 </head>
 <style>
     body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
     }
     footer {
-        background-color: #f5f5f5;
-        padding: 20px;
-        text-align: center;
+      background-color: #f9f9f9;
+      padding: 20px;
+      margin-top: auto; /* Mueve el footer hacia abajo */
     }
+    /* Cambiar el color de las flechas del carrusel */
+    .carousel-control-prev {
+        left: -150px; /* Ajustar el margen izquierdo */
+    }
+
+    .carousel-control-next {
+        right: -150px; /* Ajustar el margen derecho */
+    }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        filter: invert(100%); /* Invertir el color de las flechas */
+        opacity: 1; /* Ajustar la opacidad si es necesario */
+    }
+</style>
     
 </style>
 @yield('styles')

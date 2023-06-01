@@ -18,7 +18,7 @@
 <body>
 	<div class="sidebar close">
 		<div class="logo-details">
-		  <i class='bx bxl-kickstarter bx-tada' style='color:#080808'></i>
+		  <i class='bx' style='color:#080808'><img src="{{asset('img/favicon.png')}}" style="width: 24px;"></i>
 		  <span class="logo_name"style='color:#080808'>VisualSeyra</span>
 		</div>
 		<ul class="nav-links">

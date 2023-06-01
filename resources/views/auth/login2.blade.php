@@ -26,7 +26,7 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <!-- Validation Errors -->
-    <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    
     <form method="POST" action="{{ route('login') }}">
     @csrf
       <section class="ftco-section">
@@ -57,6 +57,7 @@
                     </div>
                   </div>
                   <form action="#" class="signin-form">
+                    <label class="label" for="validations"><x-auth-validation-errors class="mb-4" :errors="$errors" style="color:red" /> </label>
                     <div class="form-group mb-3">
                       <label class="label" for="name">Correo</label>
                       <input
