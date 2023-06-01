@@ -13,10 +13,10 @@ class Pack extends Model
     use HasFactory, SoftDeletes;
 
     protected $table = 'packs';
-    protected $fillable = ['servicio_id', 'nombre', 'contenido', 'precio'];
+    protected $fillable = ['servicio_id', 'nombre', 'contenido', 'precio','image'];
 
     public function servicio()
     {
-        return $this->belongsTo(Service::class);
+        return $this->belongsTo(Service::class, 'servicio_id');
     }
 }

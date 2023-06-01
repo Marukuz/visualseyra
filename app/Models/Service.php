@@ -17,4 +17,9 @@ class Service extends Model
 
     protected $fillable = ['nombre'];
 
+    public function packs()
+    {
+        return $this->hasMany(Pack::class,'servicio_id');
+    }
+
 }

@@ -19,7 +19,7 @@
     />
     
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.png') }}">
-    <link rel="stylesheet" href="{{ asset('../css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
   </head>
   <body>
     <!-- Session Status -->
@@ -39,7 +39,7 @@
               <div class="wrap d-md-flex">
                 <div
                   class="img"
-                  style="background-image: url(../img/logologin.jpg)"
+                  style="background-image: url(img/logologin.jpg)"
                 ></div>
                 <div class="login-wrap p-4 p-md-5">
                   <div class="d-flex">

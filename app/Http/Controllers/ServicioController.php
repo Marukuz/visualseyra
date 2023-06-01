@@ -57,13 +57,34 @@ class ServicioController extends Controller
         //
         $datos = $request->validate([
             'nombre'=>'required',
+            'image' => 'required',
+        ],[],[
+            'image' => 'imagen'
         ]);
         
+        $image = $request->file('image');
+
+        $nombreArchivo = 'pack_'.$datos['nombre'].'_'.time().'.'.$image->getClientOriginalExtension();
+
+
+        if ($request->hasFile('image')) {
+            $image->move(public_path('img'), $nombreArchivo);
+        }
+
+        $datos['image'] = $nombreArchivo;
+
         Service::create($datos);
 
         return redirect()->route('servicio.listar');
     }
 
+    public function showPacks($id){
+
+        $packs = Pack::where('servicio_id',$id)->get();
+        return view('servicios.packs',[
+           'packs' => $packs
+        ]);
+    }
     /**
      * Display the specified resource.
      *

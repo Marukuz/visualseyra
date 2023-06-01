@@ -30,6 +30,7 @@ class UserController extends Controller
     public function create()
     {
         //
+        return view('user/crear');
     }
 
     /**
@@ -40,16 +41,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'dni'=>['required','regex:/((^[A-Z]{1}[0-9]{7}[A-Z0-9]{1}$|^[T]{1}[A-Z0-9]{8}$)|^[0-9]{8}[A-Z]{1}$)/'],
-            'name'=>'required|regex:/^[a-z]+$/i',
-            'email'=>'required|email',
+        $datos = $request->validate( [
+            'dni'=> ['required','regex:/((^[A-Z]{1}[0-9]{7}[A-Z0-9]{1}$|^[T]{1}[A-Z0-9]{8}$)|^[0-9]{8}[A-Z]{1}$)/'],
+            'name'=> ['required', 'string', 'regex:/^[a-zA-Z ]*$/'],
+            'email'=> 'required|email',
             'telefono'=>['required','regex:/(\+34|0034|34)?[ -]*(6|7|8|9)[ -]*([0-9][ -]*){8}/'],
+            'tipo' => 'required',
+        ],[],[
+            'name' => 'nombre',
+            'email' => 'correo'
         ]);
 
-        User::create($request->all());
-    
-        return response()->json(['success' => true]);
+        User::create($datos);
+
+        return redirect()->route('admin.index');
+       
     }
 
     /**
@@ -73,7 +79,7 @@ class UserController extends Controller
     {
         //
         $user = User::findOrFail($id);
-        return view('user/modificarUsuario',compact('user'));
+        return view('user/editar',compact('user'));
     }
 
     /**
@@ -87,9 +93,10 @@ class UserController extends Controller
     {
         $datos = $request->validate([
             'dni' => ['required', 'regex:/((^[A-Z]{1}[0-9]{7}[A-Z0-9]{1}$|^[T]{1}[A-Z0-9]{8}$)|^[0-9]{8}[A-Z]{1}$)/'],
-            'name' => 'required|regex:/^[a-z]+$/i',
+            'name' => 'required',
             'email' => 'required|email',
             'telefono' => ['required', 'regex:/(\+34|0034|34)?[ -]*(6|7|8|9)[ -]*([0-9][ -]*){8}/'],
+            'tipo' => 'required'
         ]);
 
         $user = User::findOrFail($id);

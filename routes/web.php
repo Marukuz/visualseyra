@@ -51,7 +51,7 @@ Route::post('/comment', [CommentController::class, 'store'])->name('comments.sto
 
 // Servicios routes
 Route::get('/servicios',[ServicioController::class, 'indexAdmin'])->name('servicio.listar');
-
+Route::get('/servicios/{id}/packs',[ServicioController::class, 'showPacks'])->name('servicio.packs');
 // User Routes
 Route::put('/perfil/password/{id}', [UserController::class, 'updatePass'])->name('updatePassword');
 

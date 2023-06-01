@@ -8,7 +8,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link add-user">Añadir Usuario</a>
+            <a class="nav-link add-user" href="{{route('user.create')}}">Añadir Usuario</a>
           </li>
         </ul>
       </div>
@@ -68,50 +68,6 @@
   </div>
 </div>
 
-<!-- MODAL CREAR USUARIO -->
-<div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="crearUsuarioLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="createUserModalLabel">Crea un usuario</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        @error('dni')
-        <span class="text-danger">{{ $message }}</span>
-        @enderror
-        <label class="mt-2">DNI:</label>
-        <input type="text" name="dni" class="form-control mt-2">
-        @error('name')
-        <span class="text-danger">{{$message}}</span>
-        @enderror
-        <label class="mt-2">Nombre:</label>
-        <input type="text" name="name" class="form-control mt-2">
-        @error('email')
-        <span class="text-danger">{{$message}}</span>
-        @enderror
-        <label class="mt-2">Correo:</label>
-        <input type="email" name="email" class="form-control mt-2">
-        @error('telefono')
-        <span class="text-danger">{{$message}}</span>
-        @enderror
-        <label class="mt-2">Telefono:</label>
-        <input type="text" name="telefono" class="form-control mt-2">
-        @error('password')
-        <span class="text-danger">{{$message}}</span>
-        @enderror
-        <label class="mt-2">Contraseña:</label>
-        <input type="password" name="password" class="form-control mt-2">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="submit" class="btn btn-primary" id="create-user-button">Crear</button>
-      </div>
-    </div>
-  </div>
-</div>
 @endsection
 @section('script')
 <script>
@@ -128,40 +84,6 @@
           },
           success: function() {
             location.reload();
-          }
-        });
-      });
-    });
-
-    $('.add-user').click(function() {
-      $('#createUserModal').modal('show');
-      $('#create-user-button').click(function() {
-        var data = {
-          dni: $('input[name=dni]').val(),
-          name: $('input[name=name]').val(),
-          email: $('input[name=email]').val(),
-          telefono: $('input[name=telefono]').val(),
-          password: $('input[name=password]').val()
-        };
-        $.ajax({
-          url: '/perfil/',
-          method: 'POST',
-          data: {
-            ...data,
-            _token: '{{ csrf_token() }}'
-          },
-          success: function(response) {
-            if (response.success) {
-              location.reload();
-            } else {
-              // Eliminar mensajes de error anteriores
-              $('.text-danger').remove();
-              // Agregar nuevos mensajes de error
-              $.each(response.errors, function(key, value) {
-                var errorMessage = $('<span>').addClass('text-danger').text(value[0]);
-                $('[name="' + key + '"]').after(errorMessage);
-              });
-            }
           }
         });
       });

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pack;
 use App\Models\Service;
+use Illuminate\Support\Facades\Storage;
+
 
 class PackController extends Controller
 {
@@ -51,9 +53,20 @@ class PackController extends Controller
             'contenido' =>'required',
             'servicio_id' => 'required',
             'precio' => 'required',
-            'image' => 'required|image'
+            'image' => 'required'
         ]);
-        
+
+        $image = $request->file('image');
+
+        $nombreArchivo = 'pack_'.$datos['nombre'].'_'.time().'.'.$image->getClientOriginalExtension();
+
+
+        if ($request->hasFile('image')) {
+            $image->move(public_path('img'), $nombreArchivo);
+        }
+
+        $datos['image'] = $nombreArchivo;
+
         Pack::create($datos);
 
         return redirect()->route('pack.index');
@@ -102,5 +115,7 @@ class PackController extends Controller
     public function destroy($id)
     {
         //
+        $pack = Pack::find($id);
+        $pack->delete();
     }
 }

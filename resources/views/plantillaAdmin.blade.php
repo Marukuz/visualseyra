@@ -81,7 +81,7 @@
 					<img src="{{asset('img/profile.png')}}" alt="profileImg">
 				  </div>
 				  <div class="name-job">
-					<div class="profile_name">{{ Auth::user()->name }}</div>
+					<div class="profile_name" style="{{ strlen(Auth::user()->name) > 10 ? 'font-size: 14px;' : '' }}">{{ Auth::user()->name }}</div>
 					<div class="job">{{ Auth::user()->tipo }}</div>
 				  </div>
 					<a href="{{route('inicio.index')}}">

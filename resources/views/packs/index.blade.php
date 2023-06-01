@@ -9,7 +9,7 @@
                 <ul class="navbar-nav">
                     <li>
                         <a class="hover:text-blue-600 nav-link" href="{{ route('pack.create') }}" title="Admin">
-                            Nuevo pack
+                            Nuevo Pack
                         </a>
                     </li>
                 </ul>
