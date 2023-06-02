@@ -92,6 +92,13 @@ class PackController extends Controller
     public function edit($id)
     {
         //
+        $servicios = Service::all();
+        $pack = Pack::findOrFail($id);
+
+        return view('packs/editar',[
+            'pack' => $pack,
+            'servicios' => $servicios
+        ]);
     }
 
     /**
@@ -104,6 +111,31 @@ class PackController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $datos = $request->validate([
+            'nombre'=>'required',
+            'contenido' =>'required',
+            'servicio_id' => 'required',
+            'precio' => 'required',
+        ]);
+
+        $pack = Pack::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $nombreArchivo = 'pack_'.$datos['nombre'].'_'.time().'.'.$image->getClientOriginalExtension();
+            //Borrar antigua imagen por si acaso
+            $rutaArchivo = public_path('img') . '/' . $pack->image;
+            unlink($rutaArchivo);    
+            // Movemos la nueva imagen s
+            $image->move(public_path('img'), $nombreArchivo);
+                
+            $datos['image'] = $nombreArchivo;
+        }
+
+
+        $pack->update($datos);
+
+        return redirect()->route('pack.index');
     }
 
     /**

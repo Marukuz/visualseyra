@@ -38,6 +38,7 @@
 							<div class="item">
 								<div class="item_name">
 									DNI: @error('dni')
+									<span class="text-danger">{{$message}}</span>
 									@enderror
 								</div>
 								<div class="item_email">
@@ -53,6 +54,7 @@
 							<div class="item">
 								<div class="item_name">
 									Nombre: @error('name')
+									<span class="text-danger">{{$message}}</span>s
 									@enderror
 								</div>
 								<div class="item_email">
@@ -68,6 +70,7 @@
 							<div class="item">
 								<div class="item_name">
 									Correo: @error('email')
+									<span class="text-danger">{{$message}}</span>
 									@enderror
 								</div>
 								<div class="item_email">
@@ -83,6 +86,7 @@
 							<div class="item">
 								<div class="item_name">
 									Telefono: @error('telefono')
+									<span class="text-danger">{{$message}}</span>
 									@enderror
 								</div>
 								<div class="item_email">
@@ -156,6 +160,22 @@
 	var settings_btn = document.querySelector(".settings_btn");
 	var profile_slider = document.querySelector(".profile_slider");
 	var backbtn = document.querySelector(".back_btn");
+
+	// Verifica y aplica el estado de la animación al cargar la página
+	window.addEventListener('load', function() {
+		var isAnimationOpen = localStorage.getItem('animationState') === 'open';
+
+		if (isAnimationOpen) {
+			profile_slider.classList.add("active");
+			settings_btn.classList.add("active");
+		}
+	});
+
+	// Guarda el estado de la animación cuando se cierra la página
+	window.addEventListener('beforeunload', function() {
+		var isOpen = profile_slider.classList.contains("active");
+		localStorage.setItem('animationState', isOpen ? 'open' : 'closed');
+	});
 
 	settings_btn.addEventListener("click", function() {
 		profile_slider.classList.toggle("active");

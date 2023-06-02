@@ -10,13 +10,15 @@
 <div class="container packs" style="display: flex; align-items: center; justify-content: center; height: 100%;">
   <div class="row">
     @foreach($servicios as $servicio)
-    <div class="col-md-6">
-      <div class="card">
-        <img src="{{ asset('img/'.$servicio->image) }}" class="card-img-top" >
-        <div class="card-body">
-          <h5 class="card-title">{{$servicio->nombre}}</h5>
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <img class="card-img-top" src="{{ asset('img/'.$servicio->image) }}" alt="Servicio 3">
+        <div class="card-body d-flex flex-column">
+          <h3 class="card-title font-weight-bold">{{$servicio->nombre}}</h3>
           <p class="card-text">{{$servicio->descripcion}}</p>
-          <a href="{{route('servicio.packs', $servicio->id)}}" class="btn btn-primary">Ver Packs</a>
+          <div class="mt-auto">
+              <a href="{{route('servicio.packs', $servicio->id)}}" class="btn btn-primary">Ver Packs</a>
+          </div>
         </div>
       </div>
     </div>

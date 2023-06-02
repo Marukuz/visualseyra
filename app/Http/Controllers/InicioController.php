@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Service;
+
 
 class InicioController extends Controller
 {
@@ -14,7 +16,11 @@ class InicioController extends Controller
     public function index()
     {
         //
-        return view('inicio/index');
+        $services = Service::all();
+
+        return view('inicio/index',[
+            'servicios' => $services
+        ]);
     }
 
     /**

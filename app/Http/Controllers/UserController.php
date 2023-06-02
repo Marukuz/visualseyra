@@ -46,7 +46,7 @@ class UserController extends Controller
             'name'=> ['required', 'string', 'regex:/^[a-zA-Z ]*$/'],
             'email'=> 'required|email',
             'telefono'=>['required','regex:/(\+34|0034|34)?[ -]*(6|7|8|9)[ -]*([0-9][ -]*){8}/'],
-            'tipo' => 'required',
+            'tipo' => 'required'
         ],[],[
             'name' => 'nombre',
             'email' => 'correo'
@@ -57,6 +57,35 @@ class UserController extends Controller
         return redirect()->route('admin.index');
        
     }
+
+        /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeUser(Request $request)
+    {
+        $datos = $request->validate( [
+            'dni'=> ['required','regex:/((^[A-Z]{1}[0-9]{7}[A-Z0-9]{1}$|^[T]{1}[A-Z0-9]{8}$)|^[0-9]{8}[A-Z]{1}$)/'],
+            'name'=> ['required', 'string', 'regex:/^[a-zA-Z ]*$/'],
+            'email'=> 'required|email',
+            'telefono'=>['required','regex:/(\+34|0034|34)?[ -]*(6|7|8|9)[ -]*([0-9][ -]*){8}/'],
+        ],[],[
+            'name' => 'nombre',
+            'email' => 'correo'
+        ]);
+
+        $datos['tipo'] = 'Usuario';
+
+        $user = User::create($datos);
+
+        Auth::login($user);
+        
+        return redirect()->route('inicio.index');
+       
+    }
+
 
     /**
      * Display the specified resource.

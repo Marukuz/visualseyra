@@ -48,7 +48,7 @@
         <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="https://visualseyra.com/wp-content/uploads/2017/03/logo-mobile-2.png" width="150px"></a>
+                <a class="navbar-brand" href="{{route('inicio.index')}}"><img src="https://visualseyra.com/wp-content/uploads/2017/03/logo-mobile-2.png" width="150px"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

@@ -29,7 +29,7 @@
                         <span class="text-danger">{{$message}}</span>
                         @enderror    
                     </label><br>
-                    <input style="width: 748px;" class="border rounded focus:outline-none focus:shadow-outline p-2 mb-4" type="text" name="title" value="{{ $post->title }}">
+                    <input style="width: 748px;" class="border rounded focus:outline-none focus:shadow-outline p-2 mb-4" type="text" name="title" value="{{ old('title',$post->title) }}">
                 </div>
                 <div class="mb-12">
                     <label>Contenido:
@@ -37,7 +37,7 @@
                         <span class="text-danger">{{$message}}</span>
                         @enderror 
                     </label>
-                    <textarea class="ckeditor border rounded focus:outline-none focus:shadow-outline p-2 mb-4" name="body">{!! html_entity_decode(htmlspecialchars($post->body)) !!}</textarea>
+                    <textarea class="ckeditor border rounded focus:outline-none focus:shadow-outline p-2 mb-4" name="body">{!! old('body',html_entity_decode(htmlspecialchars($post->body))) !!}</textarea>
                 </div>
                 <div class="mb-12">
                     Is draft?

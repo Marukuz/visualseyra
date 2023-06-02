@@ -12,22 +12,6 @@
             <a href="#" class="btn btn-primary btn-lg">Conócenos</a>
           </div>
         </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="{{ asset('img/carrousel2.jpg') }}" alt="Videografía y Fotografía">
-          <div class="carousel-caption d-md-block">
-            <h1 class="display-3 font-weight-bold text-light mb-3">Videografía y Fotografía</h1>
-            <p class="lead text-light mb-5">Capturamos tus mejores momentos</p>
-            <a href="#" class="btn btn-primary btn-lg">Conócenos</a>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="{{ asset('img/carrousel3.jpg') }}" alt="Videografía y Fotografía">
-          <div class="carousel-caption d-md-block">
-            <h1 class="display-3 font-weight-bold text-light mb-3">Videografía y Fotografía</h1>
-            <p class="lead text-light mb-5">Capturamos tus mejores momentos</p>
-            <a href="#" class="btn btn-primary btn-lg">Conócenos</a>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -37,29 +21,20 @@
   <div class="container my-5">
     <h2 class="text-center mb-5">Nuestros servicios</h2>
     <div class="row">
+      @foreach($servicios as $servicio)
       <div class="col-md-6 mb-4">
         <div class="card h-100">
-          <img class="card-img-top" src="{{ asset('img/bodas.jpg') }}" alt="Servicio 3">
-          <div class="card-body">
-            <h3 class="card-title font-weight-bold">Bodas</h3>
-            <p class="card-text">¡Celebra el amor con nuestro servicio de bodas excepcional! En Visualseyra, entendemos que tu boda es uno de los momentos más especiales de tu vida, por eso nos dedicamos a hacer de cada detalle un recuerdo inolvidable.</p>
-            <br>
-            <a class="btn btn-primary" href="{{route('servicio.index')}}">Detalles</a>
+          <img class="card-img-top" src="{{ asset('img/'.$servicio->image) }}" alt="Servicio 3">
+          <div class="card-body d-flex flex-column">
+            <h3 class="card-title font-weight-bold">{{$servicio->nombre}}</h3>
+            <p class="card-text">{{$servicio->descripcion}}</p>
+            <div class="mt-auto">
+              <a class="btn btn-primary" href="{{route('servicio.index')}}">Detalles</a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="{{ asset('img/comuniones.jpg') }}" alt="Servicio 3">
-          <div class="card-body">
-            <h3 class="card-title font-weight-bold">Comuniones</h3>
-            <p class="card-text">
-              ¡Celebra un día especial con nuestro servicio de comuniones inolvidables! En Visualseyra, comprendemos que la Primera Comunión de tu hijo/a es un momento único y significativo en su vida, por eso nos dedicamos a hacer de cada detalle una experiencia memorable
-            </p>
-            <a class="btn btn-primary" href="{{route('servicio.index')}}">Detalles</a>
-          </div>
-        </div>
-      </div>
+      @endforeach
     </div>
   </div>
   <!-- /Servicios -->

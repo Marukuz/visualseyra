@@ -4,20 +4,8 @@
     <div class="container-fluid px-0">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="d-block w-100" src="{{ asset('img/carrousel1.jpg') }}" alt="Videografía y Fotografía">
-              <div class="carousel-caption d-md-block">
-                <h1 class="display-3 font-weight-bold text-light mb-3">Ultimas Noticias</h1>
-              </div>
-            </div>
-            <div class="carousel-item">
+            <div class="carousel-item  active">
               <img class="d-block w-100" src="{{ asset('img/carrousel2.jpg') }}" alt="Videografía y Fotografía">
-              <div class="carousel-caption d-md-block">
-                <h1 class="display-3 font-weight-bold text-light mb-3">Ultimas Noticias</h1>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="{{ asset('img/carrousel3.jpg') }}" alt="Videografía y Fotografía">
               <div class="carousel-caption d-md-block">
                 <h1 class="display-3 font-weight-bold text-light mb-3">Ultimas Noticias</h1>
               </div>

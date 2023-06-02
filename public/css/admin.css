@@ -4,6 +4,9 @@
     box-sizing: border-box;
     font-family: "Segoe UI";
 }
+#agenda {
+    background-color: #c0c0c0; /* Cambia este valor al color deseado */
+}
 .sidebar {
     position: fixed;
     top: 0;

@@ -68,8 +68,7 @@
                                     <option selected>Usuario</option>
                                     <option>Administrador</option>    
                                     @else
-                                    <option selected disabled>Selecciona un rol</option>
-                                    <option>Usuario</option>
+                                    <option selected>Usuario</option>
                                     <option>Administrador</option>
                                     @endif
                                 </select>

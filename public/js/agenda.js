@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
         editable: true,
         displayEventTime: false,
         selectable: true,
-
         headerToolbar: {
             left: "prev,next today",
             center: "title",
