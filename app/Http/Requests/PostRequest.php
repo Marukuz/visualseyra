@@ -28,6 +28,7 @@ class PostRequest extends FormRequest
             'title' => 'required|max:255',
             'body' => 'required',
             'is_draft' => 'required',
+            'image' => 'required',
         ];
     }
 
@@ -42,7 +43,8 @@ class PostRequest extends FormRequest
             'title.required' => 'El titulo no puede estar vacio',
             'title.max' => 'El titulo no puede exceder los 255 caracteres',
             'body.required' => 'El contenido no puede estar vacio',
-            'is_draft.required' => 'You must sent if is draft or not',
+            'is_draft.required' => 'Tienes que seleccionar si es un borrador o no',
+            'image.required' => 'Tienes que introducir una imagen.'
         ];
     }
 }

@@ -45,14 +45,27 @@ class AdminPostController extends Controller
         $datos = $request->validate([
             'title'=>'required',
             'body'=>'required',
-            'is_draft'=>'required'
+            'is_draft'=>'required',
+            'image' => 'required'
         ]);
-        
+
+        $image = $request->file('image');
+
+        $nombreArchivo = 'post_'.$datos['title'].'_'.time().'.'.$image->getClientOriginalExtension();
+
+
+        if ($request->hasFile('image')) {
+            $image->move(public_path('img'), $nombreArchivo);
+        }
+
+        $datos['image'] = $nombreArchivo;
+
         $user = Auth::user();
         $post = new Post;
         $post->title = $datos['title'];
         $post->body = $datos['body'];
         $post->is_draft = $datos['is_draft'];
+        $post->image = $datos['image'];
         $post->user()->associate($user);
         $post->save();
 

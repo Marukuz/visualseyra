@@ -18,7 +18,7 @@
         </nav>
         <div class="row justify-content-center mt-3">
             <div class="col-lg-7">
-                <form action="{{ route('servicio.store') }}" method="post">
+                <form action="{{ route('servicio.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <h1 class="text-center mt-2">Crear Servicio</h1>
                     <br>
