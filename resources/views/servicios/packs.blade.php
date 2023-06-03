@@ -26,15 +26,14 @@
                                         </ul>
                                     </div>
                                     <div>
-                                        <p>¿Quieres más información? Siempre puedes pedir cita.</p>
+                                        <p>¿Quieres más información? Siempre puedes concretar una cita en nuestras <a href="https://www.google.es/maps/place/Visualseyra/@41.58422,1.6025197,17z/data=!4m6!3m5!1s0x12a469fb9a7b2489:0x12b6233be1e36f61!8m2!3d41.58422!4d1.6051!16s%2Fg%2F11c30w1g6f?hl=es&entry=ttu">oficinas.</a></p>
                                         @if (!Auth::user())
                                             <a href="{{ route('login') }}" class="btn btn-secondary buy-button">Pedir
                                                 Cita</a>
                                             <a href="{{ route('login') }}" class="btn btn-success buy-button">Comprar</a>
                                         @else
-                                            <a href="#" class="btn btn-secondary buy-button" data-toggle="modal"
+                                            <a href="#" class="btn btn-primary buy-button" data-toggle="modal"
                                                 data-target="#exampleModal{{ $pack->id }}">Pedir Cita</a>
-                                            <a href="#" class="btn btn-success buy-button">Comprar</a>
                                         @endif
                                     </div>
                                 </div>

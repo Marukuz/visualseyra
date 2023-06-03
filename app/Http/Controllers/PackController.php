@@ -54,6 +54,8 @@ class PackController extends Controller
             'servicio_id' => 'required',
             'precio' => 'required',
             'image' => 'required'
+        ],[
+            'image.required' => 'Tienes que introducir una imagen.',
         ]);
 
         $image = $request->file('image');

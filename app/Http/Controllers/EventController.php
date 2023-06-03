@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Models\Pack;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CitasUsuario;
+use App\Mail\CitasAdmin;
 use Carbon\Carbon;
 
 class EventController extends Controller
@@ -32,6 +34,12 @@ class EventController extends Controller
     public function create()
     {
         //
+    }
+
+
+    public function showCitaUsuario(){
+
+        return view('citas/citas');
     }
 
     /**
@@ -71,8 +79,14 @@ class EventController extends Controller
         $minutos = $datetime->format('i');
 
         $datos['fecha'] = $datetime->setTime(0, 0, 0);
+        $user = Auth::user()->name;
+        $admins = User::where('tipo', 'Administrador')->get();
 
-        Mail::to(Auth::user()->email)->send(new CitasUsuario($dia,$mes,$hora,$minutos));
+        Mail::to(Auth::user()->email)->send(new CitasUsuario($user,$dia,$mes,$hora,$minutos));
+
+        foreach($admins as $admin){
+            Mail::to($admin->email)->send(new CitasAdmin($admin->name,$user,$dia,$mes,$hora,$minutos));
+        }
 
         Event::create($datos);
         return redirect()->route('servicio.listar');

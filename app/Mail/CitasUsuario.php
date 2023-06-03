@@ -15,15 +15,17 @@ class CitasUsuario extends Mailable
     public $mes;
     public $hora;
     public $minutos;
+    public $user;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($dia,$mes,$hora,$minutos)
+    public function __construct($user,$dia,$mes,$hora,$minutos)
     {
         //
+        $this->user = $user;
         $this->dia = $dia;
         $this->mes = $mes;
         $this->hora = $hora;

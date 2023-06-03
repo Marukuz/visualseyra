@@ -17,7 +17,11 @@ document.addEventListener("DOMContentLoaded", function () {
             center: "title",
             right: "dayGridMonth,timeGridWeek,listWeek",
         },
-
+        views: {
+            week: {
+              allDaySlot: false, // Esta opción elimina la pestaña "allday"
+            }
+        },
         events: "/agenda/show",
 
         eventDragStart: function(info) {

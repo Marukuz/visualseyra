@@ -1,7 +1,7 @@
 @extends('plantillaAdmin')
 @section('contenido')
-<br><br><br><br>
-<div class="container mt-5">
+<br><br><br>
+<div class="container">
     <div id="agenda">
 
     </div>

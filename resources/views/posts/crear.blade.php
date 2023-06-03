@@ -34,7 +34,7 @@
                         </div>
                         <div class="mb-12 mt-3">
                             <label>Imagen de cabecera:
-                                @error('title') 
+                                @error('image') 
                                 <span class="text-danger">{{$message}}</span>
                                 @enderror    
                             </label><br>

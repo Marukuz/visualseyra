@@ -97,10 +97,10 @@
                                 <ul class="dropdown-menu text-center">
                                     <li><a class="dropdown-item" href="{{ url('perfil') }}">Perfil</a></li>
                                     <li><a class="dropdown-item" href="{{ url('perfil') }}">Citas</a></li>
+                                    @if (Auth::user()->tipo == 'Administrador')
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    @if (Auth::user()->tipo == 'Administrador')
                                         <li><a class="dropdown-item" href="{{ url('admin') }}">Admin</a></li>
                                     @endif
                                     <li>

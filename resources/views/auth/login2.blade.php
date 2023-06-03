@@ -19,7 +19,7 @@
   <!-- Validation Errors -->
 
   
-    <section class="ftco-section" id="login-section" {{ $errors->any() ? 'hidden' : '' }}>
+    <section class="ftco-section" id="login-section">
       <div class="container">
         <div class="row justify-content-center">
           <br><br><br><br><br><br><br>

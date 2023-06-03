@@ -58,6 +58,9 @@ Route::get('/servicios/{id}/packs',[ServicioController::class, 'showPacks'])->na
 Route::put('/perfil/password/{id}', [UserController::class, 'updatePass'])->name('updatePassword');
 Route::post('/usuario/crear', [UserController::class, 'storeUser'])->name('usuario.store');
 
+// Citas
+Route::get('/citas', [EventController::class,'showCitaUsuario'])->name('cita.show');
+
 // Google Routes
  
 Route::get('/login-google', function () {

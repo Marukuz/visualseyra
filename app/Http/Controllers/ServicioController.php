@@ -60,7 +60,9 @@ class ServicioController extends Controller
         $datos = $request->validate([
             'nombre' => 'required',
             'image' => 'required',
-        ], [], [
+        ], [
+            'image.required' => 'Tienes que introducir una imagen.',
+        ], [
             'image' => 'imagen'
         ]);
 
