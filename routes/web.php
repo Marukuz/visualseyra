@@ -59,7 +59,7 @@ Route::put('/perfil/password/{id}', [UserController::class, 'updatePass'])->name
 Route::post('/usuario/crear', [UserController::class, 'storeUser'])->name('usuario.store');
 
 // Citas
-Route::get('/citas', [EventController::class,'showCitaUsuario'])->name('cita.show');
+Route::get('/citas/{id}', [EventController::class,'showCitaUsuario'])->name('cita.show');
 
 // Google Routes
  

@@ -96,7 +96,7 @@
                                 </button>
                                 <ul class="dropdown-menu text-center">
                                     <li><a class="dropdown-item" href="{{ url('perfil') }}">Perfil</a></li>
-                                    <li><a class="dropdown-item" href="{{ url('perfil') }}">Citas</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('cita.show',Auth::user()->id) }}">Citas</a></li>
                                     @if (Auth::user()->tipo == 'Administrador')
                                     <li>
                                         <hr class="dropdown-divider">

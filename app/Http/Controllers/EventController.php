@@ -33,14 +33,23 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        // 
     }
 
 
-    public function showCitaUsuario(){
+    public function showCitaUsuario($id){
+        $cita = Event::where('user_id', $id)->first();
+    
+        $fecha = $cita->formattedFecha = Carbon::parse($cita->start)->locale('es')->isoFormat('dddd, D [de] MMMM [de] YYYY');
+        $hora  = $cita->formattedHora = Carbon::parse($cita->start)->format('H:i');
 
-        return view('citas/citas');
+        return view('citas.citas', [
+            'cita' => $cita,
+            'fecha' => $fecha,
+            'hora' => $hora
+        ]);
     }
+    
 
     /**
      * Store a newly created resource in storage.
