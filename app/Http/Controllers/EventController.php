@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use App\Models\Pack;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\CitasUsuario;
 use Carbon\Carbon;
 
 class EventController extends Controller
@@ -45,6 +49,34 @@ class EventController extends Controller
         return response()->json(['success' => true]);
     }
     
+    public function citaUsuario(Request $request,$id){
+        $datos = $request->validate([
+            'start' => 'required',
+            
+        ], [], [
+            'start' => 'fecha'
+        ]);
+
+        $pack = Pack::findOrFail($id);
+
+        $datos['title']       = 'Cita '.$pack->nombre.' '. Auth::user()->name;
+        $datos['descripcion'] = 'Cita con '.Auth::user()->name.' del '.$pack->nombre. ' sobre el servicio de '.$pack->servicio->nombre;
+        $datos['user_id']     = Auth::user()->id;
+        $datos['end']         = date('Y-m-d H:i', strtotime($datos['start'] . ' +2 hours'));
+        $datetime             = Carbon::parse($datos['start']);
+        
+        $dia = $datetime->format('d');
+        $mes = $datetime->format('F');
+        $hora = $datetime->format('H');
+        $minutos = $datetime->format('i');
+
+        $datos['fecha'] = $datetime->setTime(0, 0, 0);
+
+        Mail::to(Auth::user()->email)->send(new CitasUsuario($dia,$mes,$hora,$minutos));
+
+        Event::create($datos);
+        return redirect()->route('servicio.listar');
+    }
 
     /**
      * Display the specified resource.

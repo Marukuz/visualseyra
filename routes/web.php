@@ -41,6 +41,7 @@ Route::resource('pack', PackController::class);
 // Agenda routes
 
 Route::post('/agenda/editar/{id}', [EventController::class,'edit']);
+Route::post('/cita/create/{id}', [EventController::class,'citaUsuario'])->name('cita.create');
 
 // Posts routes
 Route::get('/post', [PostController::class, 'home'])->name('posts.home');

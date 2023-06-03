@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\Pack;
+use App\Models\Event;
 use App\Models\User;
+use Carbon\Carbon;
 
 class ServicioController extends Controller
 {
@@ -17,23 +19,23 @@ class ServicioController extends Controller
     public function index()
     {
         //
-        $packsb = Pack::where('servicio_id','1')->get();
-        $packsc = Pack::where('servicio_id','2')->get();
+        $packsb = Pack::where('servicio_id', '1')->get();
+        $packsc = Pack::where('servicio_id', '2')->get();
         $servicios = Service::all();
-        return view('servicios/index',[
+        return view('servicios/index', [
             'packsb' => $packsb,
             'packsc' => $packsc,
             'servicios' => $servicios,
         ]);
     }
 
-    public function indexAdmin(){
+    public function indexAdmin()
+    {
         $servicios = Service::all();
 
         return view('servicios/listar', [
             'servicios' => $servicios
         ]);
-
     }
     /**
      * Show the form for creating a new resource.
@@ -56,15 +58,15 @@ class ServicioController extends Controller
     {
         //
         $datos = $request->validate([
-            'nombre'=>'required',
+            'nombre' => 'required',
             'image' => 'required',
-        ],[],[
+        ], [], [
             'image' => 'imagen'
         ]);
-        
+
         $image = $request->file('image');
 
-        $nombreArchivo = 'pack_'.$datos['nombre'].'_'.time().'.'.$image->getClientOriginalExtension();
+        $nombreArchivo = 'pack_' . $datos['nombre'] . '_' . time() . '.' . $image->getClientOriginalExtension();
 
 
         if ($request->hasFile('image')) {
@@ -78,13 +80,29 @@ class ServicioController extends Controller
         return redirect()->route('servicio.listar');
     }
 
-    public function showPacks($id){
-
-        $packs = Pack::where('servicio_id',$id)->get();
-        return view('servicios.packs',[
-           'packs' => $packs
+    public function showPacks($id)
+    {
+        $packs = Pack::where('servicio_id', $id)->get();
+    
+        $fechasBloqueadas = Event::select('fecha', 'end')->get();
+    
+        $fechasBloqueadasFlatpickr = $fechasBloqueadas->map(function ($evento) {
+            $start = Carbon::parse($evento->fecha)->format('Y-m-d H:i');
+            $end = Carbon::parse($evento->end)->format('Y-m-d H:i');
+    
+            return [
+                'from' => $start,
+                'to' => $end,
+            ];
+        })->toJson();
+        
+        return view('servicios.packs', [
+            'packs' => $packs,
+            'fechasBloqueadasFlatpickr' => $fechasBloqueadasFlatpickr,
         ]);
     }
+    
+
     /**
      * Display the specified resource.
      *
@@ -107,7 +125,7 @@ class ServicioController extends Controller
         //
         $servicio = Service::findOrFail($id);
 
-        return view('servicios/editar',[
+        return view('servicios/editar', [
             'servicio' => $servicio
         ]);
     }
@@ -123,7 +141,7 @@ class ServicioController extends Controller
     {
         //
         $datos = $request->validate([
-            'nombre'=>'required',
+            'nombre' => 'required',
         ]);
 
         $servicio = Service::find($id);
@@ -144,6 +162,5 @@ class ServicioController extends Controller
         //
         $servicio = Service::find($id);
         $servicio->delete();
-        
     }
 }
