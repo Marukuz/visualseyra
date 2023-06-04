@@ -1,8 +1,8 @@
 @extends('plantillaAdmin')
 @section('contenido')
-<div class="container mt-5">
+<div class="container-fluid mt-5">
     <br><br><br><br><br>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
         <div class="container-fluid">
             <a class="navbar-brand">Packs</a>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -16,14 +16,14 @@
             </div>
         </div>
     </nav>
-    <table class="table table-striped table-bordered table-hover">
+    <table class="table table-striped table-bordered table-hover" id="miTabla">
         <thead>
             <tr class="text-center">
                 <th scope="col">ID</th>
                 <th scope="col">Servicio</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Contenido</th>
-                <th scope="col">Precio</th>
+                <th scope="col">Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -31,16 +31,13 @@
             <tr>
                 <td>{{ $pack->id }}</td>
                 <td>{{ $pack->servicio->nombre }}</td>
-                <td>{{ $pack->nombre}}</td>
-                <td>{{ $pack->contenido}}</td>
-                <td>{{ $pack->precio}}€</td>
-
+                <td>{{ $pack->nombre }}</td>
+                <td>{{ $pack->contenido }}</td>
                 <td class="text-center">
                     <a class="inline-block px-4 py-1 bg-blue-500 text-white rounded mr-2 hover:bg-blue-800 btn btn-warning" href="{{ route('pack.edit', $pack) }}" title="Edit">Editar</a>
-
-                    <a class="inline-block px-4 py-1 bg-red-500 text-white rounded mr-2 hover:bg-red-800 delete-service btn btn-danger" data-service-id="{{$pack->id}}" title="Delete">Eliminar</a>
+                    <a class="inline-block px-4 py-1 bg-red-500 text-white rounded mr-2 hover:bg-red-800 delete-service btn btn-danger" data-service-id="{{ $pack->id }}" title="Delete">Eliminar</a>
                 </td>
-            <tr>
+            </tr>
             @endforeach
         </tbody>
     </table>

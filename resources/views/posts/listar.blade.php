@@ -1,9 +1,9 @@
 @extends('plantillaAdmin')
 
 @section('contenido')
-<div class="container mt-5">
+<div class="container-fluid mt-5">
     <br><br><br><br><br>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
         <div class="container-fluid">
             <a class="navbar-brand">Noticias</a>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -17,9 +17,10 @@
             </div>
         </div>
     </nav>
-    <table class="table table-striped table-bordered table-hover">
+    <table class="table table-striped table-bordered table-hover" id="miTabla">
         <thead>
             <tr class="text-center">
+                <th scope="col">ID</th>
                 <th scope="col">Titulo</th>
                 <th scope="col">Creacion</th>
                 <th scope="col">Autor</th>
@@ -30,6 +31,7 @@
         <tbody>
             @foreach($posts as $post)
             <tr>
+                <td>{{ $post->id }}</td>
                 <td>{{ $post->title }}</td>
                 <td>{{ $post->created_at->format('j F, Y') }}</td>
                 <td>{{ $post->user->name }}</td>
@@ -42,16 +44,12 @@
                 </td>
                 <td class="text-center">
                     <a class="inline-block px-4 py-1 bg-blue-500 text-white rounded mr-2 hover:bg-blue-800 btn btn-warning" href="{{ route('posts.edit', $post) }}" title="Edit">Editar</a>
-
                     <a class="inline-block px-4 py-1 bg-red-500 text-white rounded mr-2 hover:bg-red-800 delete-post btn btn-danger" title="Delete" data-post-id="{{$post->id}}">Eliminar</a>
                 </td>
-            <tr>
+            </tr>
             @endforeach
-
         </tbody>
     </table>
-    {{ $posts->links() }}
-
 </div>
 </div>
 

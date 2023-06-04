@@ -35,42 +35,29 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label>Precio:
-                            @error('precio') 
+                        <label>Servicio:
+                            @error('servicio_id') 
                             <span class="text-danger">{{$message}}</span>
                             @enderror  
                         </label>
-                        <input type="text" class="form-control" name="precio" value="{{old('precio')}}" placeholder="Introduce un precio.">
+                        <select class="form-select" name="servicio_id">
+                            @if (old('servicio_id'))
+                            @php
+                                $nombreServicio = DB::table('servicios')
+                                    ->where('id', old('servicio_id'))
+                                    ->value('nombre');  
+                            @endphp
+                            
+                            <option selected value="{{old('servicio_id')}}">{{ $nombreServicio }}</option>
+                            @else
+                            <option selected disabled>Selecciona el servicio.</option>
+                            @endif
+                            
+                            @foreach($servicios as $servicio)
+                            <option value="{{$servicio->id}}">{{$servicio->nombre}}</option>
+                            @endforeach
+                        </select>
                       </div>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Servicio:
-                                @error('servicio_id') 
-                                <span class="text-danger">{{$message}}</span>
-                                @enderror  
-                            </label>
-                            <select class="form-select" name="servicio_id">
-                                @if (old('servicio_id'))
-                                @php
-                                    $nombreServicio = DB::table('servicios')
-                                        ->where('id', old('servicio_id'))
-                                        ->value('nombre');  
-                                @endphp
-                                
-                                <option selected value="{{old('servicio_id')}}">{{ $nombreServicio }}</option>
-                                @else
-                                <option selected disabled>Selecciona el servicio.</option>
-                                @endif
-                                
-                                @foreach($servicios as $servicio)
-                                <option value="{{$servicio->id}}">{{$servicio->nombre}}</option>
-                                @endforeach
-                            </select>
-                        </div>
                     </div>
                 </div>
                 <br>

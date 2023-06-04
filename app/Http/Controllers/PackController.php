@@ -52,7 +52,6 @@ class PackController extends Controller
             'nombre'=>'required',
             'contenido' =>'required',
             'servicio_id' => 'required',
-            'precio' => 'required',
             'image' => 'required'
         ],[
             'image.required' => 'Tienes que introducir una imagen.',
@@ -117,7 +116,6 @@ class PackController extends Controller
             'nombre'=>'required',
             'contenido' =>'required',
             'servicio_id' => 'required',
-            'precio' => 'required',
         ]);
 
         $pack = Pack::findOrFail($id);

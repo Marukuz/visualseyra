@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VisualSeyra</title>
+    <link rel="stylesheet" href="{{ asset('css/inicio.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
@@ -12,52 +13,12 @@
     <script src="https://cdn.jsdelivr.net/bootstrap/latest/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script src="{{ asset('js/moment.js') }}"></script>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.png') }}">
     @yield('css')
 </head>
-<style>
-    .custom-img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        margin: 0;
-        padding: 0;
-    }
-
-    footer {
-        background-color: #f9f9f9;
-        padding: 20px;
-        margin-top: auto;
-        /* Mueve el footer hacia abajo */
-    }
-
-    /* Cambiar el color de las flechas del carrusel */
-    .carousel-control-prev {
-        left: -150px;
-        /* Ajustar el margen izquierdo */
-    }
-
-    .carousel-control-next {
-        right: -150px;
-        /* Ajustar el margen derecho */
-    }
-
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        filter: invert(100%);
-        /* Invertir el color de las flechas */
-        opacity: 1;
-        /* Ajustar la opacidad si es necesario */
-    }
-</style>
-
-</style>
 @yield('styles')
 
 <body>

@@ -18,7 +18,6 @@ class Packs extends Migration
             $table->unsignedBigInteger('servicio_id');
             $table->string('nombre');
             $table->text('contenido');
-            $table->float('precio');
             $table->softDeletes();
             $table->timestamps();
 

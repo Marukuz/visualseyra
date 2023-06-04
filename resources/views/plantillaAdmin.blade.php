@@ -12,6 +12,9 @@
     <script src="https://cdn.jsdelivr.net/bootstrap/latest/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
     <script src="{{ asset('js/moment.js') }}"></script>
     <script src="{{ asset('js/agenda.js') }}"></script>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.png') }}">
@@ -110,6 +113,13 @@
     </section>
 
     <script>
+        $(document).ready(function (){
+            $('#miTabla').DataTable({
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+                },
+            });
+        });
         let arrow = document.querySelectorAll(".arrow");
         for (var i = 0; i < arrow.length; i++) {
             arrow[i].addEventListener("click", (e) => {
