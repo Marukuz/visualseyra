@@ -71,6 +71,17 @@
             </li>
             <li>
                 <div class="iocn-link">
+                    <a href="{{ route('galeria.index') }}">
+                        <i class='bx bx-photo-album'></i>
+                        <span class="link_name">Galeria</span>
+                    </a>
+                </div>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="{{ route('pack.index') }}">Galeria</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="iocn-link">
                     <a href="{{ route('agenda.index') }}">
                         <i class='bx bxs-calendar'></i>
                         <span class="link_name">Calendario</span>

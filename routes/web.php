@@ -10,6 +10,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\PackController;
+use App\Http\Controllers\GaleriaController;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +38,8 @@ Route::resource('posts', AdminPostController::class);
 Route::resource('servicio', ServicioController::class); 
 Route::resource('agenda', EventController::class); 
 Route::resource('pack', PackController::class); 
+Route::resource('galeria', GaleriaController::class); 
+
 
 // Agenda routes
 
