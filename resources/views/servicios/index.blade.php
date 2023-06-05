@@ -1,11 +1,5 @@
 @extends('plantilla')
 @section('contenido')
-<style>
-  html,
-  body {
-    height: 100%;
-  }
-</style>
 <section class="w-full bg-gray-200 flex-row justify-center text-center">
   <div class="container-fluid px-0">
       <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">

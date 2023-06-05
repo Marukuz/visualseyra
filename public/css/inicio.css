@@ -12,17 +12,15 @@ footer {
     margin-top: auto;
     /* Mueve el footer hacia abajo */
 }
-
 /* Cambiar el color de las flechas del carrusel */
-.carousel-control {
-    left: -150px;
-    /* Ajustar el margen izquierdo */
-}
 
-.carousel-control-next {
-    right: -150px;
-    /* Ajustar el margen derecho */
-}
+.carousel-control-prev {
+    transform: translateX(-150px);
+  }
+
+  .carousel-control-next {
+    transform: translateX(150px);
+  }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
