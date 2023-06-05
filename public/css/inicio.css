@@ -1,8 +1,3 @@
-.custom-img {
-    max-width: 100%;
-    height: auto;
-}
-
 body {
     display: flex;
     flex-direction: column;
@@ -19,7 +14,7 @@ footer {
 }
 
 /* Cambiar el color de las flechas del carrusel */
-.carousel-control-prev {
+.carousel-control {
     left: -150px;
     /* Ajustar el margen izquierdo */
 }
@@ -47,4 +42,15 @@ transform: scale(1.05);
 
 .gallery-image {
 transition: transform 0.3s ease;
+}
+.custom-img {
+    max-width: 100%;
+    height: auto;
+}
+.zoom-card {
+    transition: transform 0.3s;
+}
+
+.zoom-card:hover {
+    transform: scale(1.02);
 }

@@ -8,9 +8,10 @@
     </div>
 </section>
 <article class="w-full py-8">
-    <div class="flex justify-center">
+    <div class="flex justify-center ">
         <div class="container">
             <div class="max-w-4xl text-justify">
+                <img src="{{asset('img/'.$post->image)}}" style="width: 100%" class="mb-3">
                 {!! html_entity_decode(htmlspecialchars($post->body)) !!}
             </div>
         </div>

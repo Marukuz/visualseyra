@@ -1,10 +1,11 @@
 @extends('plantilla')
 @section('contenido')
-    <div class="container">
+<div>
+    <div class="container-fluid">
         <div class="container">
             @foreach ($packs as $pack)
                 <div class="col-md-12 mb-12">
-                    <div class="card mt-5 mb-5">
+                    <div class="card mt-5 mb-5 zoom-card" style="background-color: rgb(219, 219, 219)">
                         <div class="row">
                             <div class="col-md-5">
                                 <img src="{{ asset('img/' . $pack->image) }}" class="card-img custom-img" />
@@ -75,42 +76,45 @@
     </div>
     </div>
     <script>
-        const fechasBloqueadas = {!! $fechasBloqueadasFlatpickr !!};
+        window.onload = function() {
 
-        const datetimePicker = document.getElementById('fechaHora');
+            const fechasBloqueadas = {!! $fechasBloqueadasFlatpickr !!};
 
-        flatpickr(datetimePicker, {
-            enableTime: true, // Habilitar selección de tiempo
-            dateFormat: "Y-m-d H:i", // Formato de fecha y hora
-            time_24hr: true, // Formato de 24 horas
-            // Configuración para bloquear horas
-            disable: [
-                // Bloquear fechas anteriores al día de hoy
-                {
-                    from: "1900-01-01",
-                    to: new Date().setHours(0, 0, 0, 0) - 1,
+            const datetimePicker = document.getElementById('fechaHora');
+
+            flatpickr(datetimePicker, {
+                enableTime: true, // Habilitar selección de tiempo
+                dateFormat: "Y-m-d H:i", // Formato de fecha y hora
+                time_24hr: true, // Formato de 24 horas
+                // Configuración para bloquear horas
+                disable: [
+                    // Bloquear fechas anteriores al día de hoy
+                    {
+                        from: "1900-01-01",
+                        to: new Date().setHours(0, 0, 0, 0) - 1,
+                    },
+                    // Bloquear fechas provenientes de la base de datos
+                    ...fechasBloqueadas.map((fecha) => ({
+                        from: fecha.from,
+                        to: fecha.to,
+                    })),
+                ],
+                onChange: function(selectedDates, dateStr, instance) {
+                    console.log("Fecha seleccionada:", dateStr);
                 },
-                // Bloquear fechas provenientes de la base de datos
-                ...fechasBloqueadas.map((fecha) => ({
-                    from: fecha.from,
-                    to: fecha.to,
-                })),
-            ],
-            onChange: function(selectedDates, dateStr, instance) {
-                console.log("Fecha seleccionada:", dateStr);
-            },
-            locale: {
-                weekdays: {
-                    shorthand: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
-                    longhand: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
-                },
-                months: {
-                    shorthand: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-                    longhand: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto',
-                        'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
-                    ]
+                locale: {
+                    weekdays: {
+                        shorthand: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+                        longhand: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
+                    },
+                    months: {
+                        shorthand: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                        longhand: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto',
+                            'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+                        ]
+                    }
                 }
-            }
-        });
+            });
+        }
     </script>
 @endsection

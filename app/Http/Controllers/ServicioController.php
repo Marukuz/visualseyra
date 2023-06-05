@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\Pack;
 use App\Models\Event;
-use App\Models\User;
+use Intervention\Image\Facades\Image;
 use Carbon\Carbon;
 
 class ServicioController extends Controller
@@ -71,9 +71,13 @@ class ServicioController extends Controller
         $nombreArchivo = 'pack_' . $datos['nombre'] . '_' . time() . '.' . $image->getClientOriginalExtension();
 
 
-        if ($request->hasFile('image')) {
-            $image->move(public_path('img'), $nombreArchivo);
-        }
+        $compressedImage = Image::make($image)
+            ->resize(null, 800, function ($constraint) {
+                $constraint->aspectRatio();
+            })
+            ->encode('jpg', 80);
+
+        $compressedImage->save(public_path('img/' . $nombreArchivo));
 
         $datos['image'] = $nombreArchivo;
 

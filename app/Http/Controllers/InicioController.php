@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Service;
+use App\Models\Galeria;
 
 
 class InicioController extends Controller
@@ -17,9 +18,10 @@ class InicioController extends Controller
     {
         //
         $services = Service::all();
-
+        $galerias = Galeria::all();
         return view('inicio/index',[
-            'servicios' => $services
+            'servicios' => $services,
+            'galerias' => $galerias
         ]);
     }
 

@@ -12,7 +12,7 @@
       <p class="card-text-label">Lugar:</p>
       <p class="card-text-value"><a href="https://www.google.es/maps/place/Visualseyra/@41.58422,1.6043329,18z/data=!3m1!4b1!4m6!3m5!1s0x12a469fb9a7b2489:0x12b6233be1e36f61!8m2!3d41.58422!4d1.6051!16s%2Fg%2F11c30w1g6f?hl=es&entry=ttu">Oficinas de VisualSeyra</a></p>
       <p class="card-text-label">Motivo:</p>
-      <p class="card-text-value">{{$cita->descripcion}}</p>
+      <p class="card-text-value">Cita con el equipo de VisualSeyra para el tratamiento del servicio seleccionado.</p>
       <a href="{{route('inicio.index')}}" class="btn btn-secondary">Volver</a>
       <button class="btn btn-primary">Modificar Cita</button>
     </div>

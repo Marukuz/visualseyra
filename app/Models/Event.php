@@ -18,7 +18,7 @@ class Event extends Model
         'end'=>'required',
     ];
 
-    protected $fillable=['title','descripcion','fecha','start','end'];
+    protected $fillable=['title','descripcion','fecha','start','end','user_id'];
 
     public function user(): BelongsTo
     {

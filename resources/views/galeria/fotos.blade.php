@@ -16,6 +16,12 @@
                 </div>
             </div>
         </nav>
-        <h1>TEST</h1>
+        <div class="row">
+            @foreach($fotos as $foto)
+            <div class="col-md-4 mb-4 mt-3">
+                <img src="{{asset('img/'.$foto->image)}}" style="width: 100%; border: 1px black solid;">
+            </div>
+            @endforeach
+        </div>
     </div>
 @endsection

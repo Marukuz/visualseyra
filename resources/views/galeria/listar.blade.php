@@ -23,7 +23,7 @@
                         <img src="{{ asset('img/' . $galeria->image) }}" class="card-img-top" alt="Foto 1">
                         <div class="card-body">
                             <h5 class="card-title">{{ $galeria->nombre }}</h5>
-                            <a href="{{ route('galeria.show', $galeria->id) }}" class="btn btn-primary">Ver fotos</a>
+                            <a href="{{ route('galeria.showimages', $galeria->id) }}" class="btn btn-primary">Ver fotos</a>
                             <a href="#" class="btn btn-secondary" data-toggle="modal"
                                 data-target="#modal-{{ $galeria->id }}">Añadir Fotos</a>
                             <a data-galeria-id="{{ $galeria->id }}" class="btn btn-danger delete-galeria">Eliminar
@@ -47,7 +47,7 @@
                                 @csrf
                                 <div class="modal-body">
                                     <label class="mt-2">Imagen:</label>
-                                    <input type="file" multiple class="form-control mt-2" name="image">
+                                    <input type="file" multiple class="form-control mt-2" name="image[]">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

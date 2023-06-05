@@ -10,7 +10,7 @@
 		</div>
 		<div class="profile_wrap">
 			<div class="profile_img">
-				<img src="{{ Auth::user()->avatar ? Auth::user()->avatar : asset('img/profile.png') }}" alt="profile_pic">
+				<img src="{{ asset('img/profile.png') }}">
 				<p class="name">{{ Auth::user()->name }}</p>
 				<p class="place">
 				</p>

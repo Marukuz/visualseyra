@@ -78,16 +78,15 @@ class EventController extends Controller
 
         $datos['title']       = 'Cita '.$pack->nombre.' '. Auth::user()->name;
         $datos['descripcion'] = 'Cita con '.Auth::user()->name.' del '.$pack->nombre. ' sobre el servicio de '.$pack->servicio->nombre;
-        $datos['user_id']     = Auth::user()->id;
         $datos['end']         = date('Y-m-d H:i', strtotime($datos['start'] . ' +2 hours'));
         $datetime             = Carbon::parse($datos['start']);
-        
         $dia = $datetime->format('d');
         $mes = $datetime->format('F');
         $hora = $datetime->format('H');
         $minutos = $datetime->format('i');
 
         $datos['fecha'] = $datetime->setTime(0, 0, 0);
+
         $user = Auth::user()->name;
         $admins = User::where('tipo', 'Administrador')->get();
 
@@ -96,9 +95,9 @@ class EventController extends Controller
         foreach($admins as $admin){
             Mail::to($admin->email)->send(new CitasAdmin($admin->name,$user,$dia,$mes,$hora,$minutos));
         }
-
+        $datos['user_id']     = Auth::user()->id;
         Event::create($datos);
-        return redirect()->route('servicio.listar');
+        return redirect()->route('cita.show',Auth::user()->id);
     }
 
     /**

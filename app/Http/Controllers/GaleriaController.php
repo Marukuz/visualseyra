@@ -59,10 +59,14 @@ class GaleriaController extends Controller
 
         $nombreArchivo = 'galeria_' . $datos['nombre'] . '_' . time() . '.' . $image->getClientOriginalExtension();
 
+        $compressedImage = Image::make($image)
+            ->resize(null, 800, function ($constraint) {
+                $constraint->aspectRatio();
+            })
+            ->encode('jpg', 80);
 
-        if ($request->hasFile('image')) {
-            $image->move(public_path('img'), $nombreArchivo);
-        }
+        $compressedImage->save(public_path('img/' . $nombreArchivo));
+
 
         $datos['image'] = $nombreArchivo;
 
@@ -91,21 +95,58 @@ class GaleriaController extends Controller
             'image' => 'imagen'
         ]);
 
+        $galeria = Galeria::findOrFail($id);
         $images = $request->file('image');
 
-        $galeria = Galeria::findOrFail($id);
+        if (is_array($images)) {
+            foreach ($images as $index => $image) {
+                $nombreArchivo = 'fotos_' . $galeria->nombre . '_' . time() . '_' . $index . '.' . $image->getClientOriginalExtension();
 
-        foreach ($images as $image) {
-            $nombreArchivo = 'galeria_' . $galeria->nombre . '_' . time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('img'), $nombreArchivo);
+                $compressedImage = Image::make($image)
+                    ->resize(null, 800, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })
+                    ->encode('jpg', 80);
+
+                $compressedImage->save(public_path('img/' . $nombreArchivo));
+
+                $imagenDatos = [
+                    'image' => $nombreArchivo,
+                    'galeria_id' => $galeria->id
+                ];
+
+                Images::create($imagenDatos);
+            }
+        } else {
+            $nombreArchivo = 'fotos_' . $galeria->nombre . '_' . time() . '.' . $images->getClientOriginalExtension();
+            $compressedImage = Image::make($images)
+                ->resize(null, 800, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->encode('jpg', 80);
+
+            $compressedImage->save(public_path('img/' . $nombreArchivo));
+
             $datos['image'] = $nombreArchivo;
-            $datos['galera_id'] = $galeria->id;
+            $datos['galeria_id'] = $galeria->id;
 
             Images::create($datos);
         }
 
         return redirect()->route('galeria.index');
     }
+
+
+    public function showFotos($id)
+    {
+
+        $fotos = Images::where('galeria_id', $id)->get();
+
+        return view('galeria/fotos', [
+            'fotos' => $fotos
+        ]);
+    }
+
     /**
      * Display the specified resource.
      *
@@ -115,7 +156,7 @@ class GaleriaController extends Controller
     public function show()
     {
         //
-        return view('galeria/fotos');
+
     }
 
     /**

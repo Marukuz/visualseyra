@@ -7,7 +7,7 @@ use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostRequest;
-
+use Intervention\Image\Facades\Image;
 
 class AdminPostController extends Controller
 {
@@ -43,21 +43,24 @@ class AdminPostController extends Controller
     public function store(PostRequest $request)
     {
         $datos = $request->validate([
-            'title'=>'required',
-            'body'=>'required',
-            'is_draft'=>'required',
+            'title' => 'required',
+            'body' => 'required',
+            'is_draft' => 'required',
             'image' => 'required'
         ]);
 
         $image = $request->file('image');
 
-        $nombreArchivo = 'post_'.$datos['title'].'_'.time().'.'.$image->getClientOriginalExtension();
+        $nombreArchivo = 'post_' . $datos['title'] . '_' . time() . '.' . $image->getClientOriginalExtension();
 
+        $compressedImage = Image::make($image)
+            ->resize(null, 800, function ($constraint) {
+                $constraint->aspectRatio();
+            })
+            ->encode('jpg', 80);
 
-        if ($request->hasFile('image')) {
-            $image->move(public_path('img'), $nombreArchivo);
-        }
-
+        $compressedImage->save(public_path('img/' . $nombreArchivo));
+        
         $datos['image'] = $nombreArchivo;
 
         $user = Auth::user();
@@ -107,8 +110,8 @@ class AdminPostController extends Controller
     public function update(PostRequest $request, $id)
     {
         $datos = $request->validate([
-            'title'=>'required',
-            'body'=>'required'
+            'title' => 'required',
+            'body' => 'required'
         ]);
 
         $post = Post::find($id);
@@ -120,7 +123,6 @@ class AdminPostController extends Controller
         $post->save();
 
         return redirect()->route('posts.index');
-
     }
 
     /**
@@ -131,12 +133,11 @@ class AdminPostController extends Controller
      */
     public function destroy($id)
     {
-        $comments = Comment::where('post_id',$id)->get();
+        $comments = Comment::where('post_id', $id)->get();
         $post = Post::find($id);
-        foreach($comments as $comment){
+        foreach ($comments as $comment) {
             $comment->delete();
         }
         $post->delete();
-        
     }
 }

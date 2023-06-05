@@ -69,7 +69,7 @@ Route::get('/citas/{id}', [EventController::class,'showCitaUsuario'])->name('cit
 // Galeria Routes
 Route::get('galeria/addfoto/{id}',[GaleriaController::class,'addFoto'])->name('galeria.addfoto');
 Route::post('uploadfoto/{id}',[GaleriaController::class,'storeFoto'])->name('galeria.storefoto');
-
+Route::get('galeria/{id}/images',[GaleriaController::class,'showFotos'])->name('galeria.showimages');
 // Google Routes
  
 Route::get('/login-google', function () {
