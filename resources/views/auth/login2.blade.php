@@ -66,7 +66,7 @@
                       </label>
                     </div>
                     <div class="w-50 text-md-right">
-                      <a href="#">¿Contraseña olvidada?</a>
+                      <a href="{{ route('password.request') }}">¿Contraseña olvidada?</a>
                     </div>
                   </div>
                 </form>
