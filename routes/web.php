@@ -11,6 +11,7 @@ use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\PackController;
 use App\Http\Controllers\GaleriaController;
+use App\Http\Controllers\ImagesController;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -39,6 +40,7 @@ Route::resource('servicio', ServicioController::class);
 Route::resource('agenda', EventController::class); 
 Route::resource('pack', PackController::class); 
 Route::resource('galeria', GaleriaController::class); 
+Route::resource('images', ImagesController::class); 
 
 
 // Agenda routes
@@ -61,8 +63,12 @@ Route::get('/servicios/{id}/packs',[ServicioController::class, 'showPacks'])->na
 Route::put('/perfil/password/{id}', [UserController::class, 'updatePass'])->name('updatePassword');
 Route::post('/usuario/crear', [UserController::class, 'storeUser'])->name('usuario.store');
 
-// Citas
+// Cita Routes
 Route::get('/citas/{id}', [EventController::class,'showCitaUsuario'])->name('cita.show');
+
+// Galeria Routes
+Route::get('galeria/addfoto/{id}',[GaleriaController::class,'addFoto'])->name('galeria.addfoto');
+Route::post('uploadfoto/{id}',[GaleriaController::class,'storeFoto'])->name('galeria.storefoto');
 
 // Google Routes
  

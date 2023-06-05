@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Galeria;
+use App\Models\Images;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -19,7 +20,7 @@ class GaleriaController extends Controller
         //
         $galerias = Galeria::all();
 
-        return view('galeria/listar',[
+        return view('galeria/listar', [
             'galerias' => $galerias
         ]);
     }
@@ -70,6 +71,41 @@ class GaleriaController extends Controller
         return redirect()->route('galeria.index');
     }
 
+    public function addFoto($id)
+    {
+
+        $galeria = Galeria::findOrFail($id)->get();
+
+        return view('images/crear', [
+            'galeria' => $galeria,
+        ]);
+    }
+
+    public function storeFoto(Request $request, $id)
+    {
+        $datos = $request->validate([
+            'image' => 'required',
+        ], [
+            'image.required' => 'Tienes que introducir una imagen.',
+        ], [
+            'image' => 'imagen'
+        ]);
+
+        $images = $request->file('image');
+
+        $galeria = Galeria::findOrFail($id);
+
+        foreach ($images as $image) {
+            $nombreArchivo = 'galeria_' . $galeria->nombre . '_' . time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('img'), $nombreArchivo);
+            $datos['image'] = $nombreArchivo;
+            $datos['galera_id'] = $galeria->id;
+
+            Images::create($datos);
+        }
+
+        return redirect()->route('galeria.index');
+    }
     /**
      * Display the specified resource.
      *
@@ -111,8 +147,10 @@ class GaleriaController extends Controller
      * @param  \App\Models\Galeria  $galeria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Galeria $galeria)
+    public function destroy($id)
     {
         //
+        $galeria = Galeria::find($id);
+        $galeria->delete();
     }
 }

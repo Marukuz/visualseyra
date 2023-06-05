@@ -12,6 +12,8 @@ class Images extends Model
 
     protected $table    = 'imagenes';
 
+    protected $fillable=['id','galeria_id','image'];
+
     public function galeria()
     {
         return $this->belongsTo(Galeria::class);
