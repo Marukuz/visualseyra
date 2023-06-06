@@ -11,9 +11,16 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\CitasUsuario;
 use App\Mail\CitasAdmin;
 use Carbon\Carbon;
+use App\Http\Middleware\Admin;
 
 class EventController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(Admin::class)->except(['showCitaUsuario', 'citaUsuario']);
+    }
+    
     /**
      * Display a listing of the resource.
      *

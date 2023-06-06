@@ -8,9 +8,16 @@ use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostRequest;
 use Intervention\Image\Facades\Image;
+use App\Http\Middleware\Admin;
 
 class AdminPostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(Admin::class);
+    }
+
     /**
      * Display a listing of the resource.
      *

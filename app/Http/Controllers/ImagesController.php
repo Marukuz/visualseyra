@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Middleware\Admin;
 
 class ImagesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(Admin::class);
+    }
+
     /**
      * Display a listing of the resource.
      *

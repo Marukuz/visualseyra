@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Middleware\Admin;
 
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(Admin::class)->except(['storeUser']);
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -6,10 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Pack;
 use App\Models\Service;
 use Intervention\Image\Facades\Image;
-
+use App\Http\Middleware\Admin;
 
 class PackController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(Admin::class);
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -8,9 +8,16 @@ use App\Models\Pack;
 use App\Models\Event;
 use Intervention\Image\Facades\Image;
 use Carbon\Carbon;
+use App\Http\Middleware\Admin;
 
 class ServicioController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(Admin::class)->except(['index', 'showPacks']);
+    }
+
     /**
      * Display a listing of the resource.
      *

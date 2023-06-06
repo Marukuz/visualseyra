@@ -31,7 +31,6 @@
                                         @if (!Auth::user())
                                             <a href="{{ route('login') }}" class="btn btn-secondary buy-button">Pedir
                                                 Cita</a>
-                                            <a href="{{ route('login') }}" class="btn btn-success buy-button">Comprar</a>
                                         @else
                                             <a href="#" class="btn btn-primary buy-button" data-toggle="modal"
                                                 data-target="#exampleModal{{ $pack->id }}">Pedir Cita</a>
@@ -59,7 +58,7 @@
                                     <h3>{{ $pack->nombre . ' - ' . $pack->servicio->nombre }}</h3>
                                     <img src="{{ asset('img/' . $pack->image) }}" class="custom-img" /><br><br><br>
                                     <label class="form-label">Elige una fecha:</label>
-                                    <input type="datetime-local" id="fechaHora" class="form-control"
+                                    <input type="datetime-local" class="form-control fechaHora"
                                         placeholder="Elige una fecha para la cita" name="start">
                                 </div>
                                 <div class="modal-footer">
@@ -80,7 +79,7 @@
 
             const fechasBloqueadas = {!! $fechasBloqueadasFlatpickr !!};
 
-            const datetimePicker = document.getElementById('fechaHora');
+            const datetimePicker = document.getElementsByClassName('fechaHora');
 
             flatpickr(datetimePicker, {
                 enableTime: true, // Habilitar selección de tiempo

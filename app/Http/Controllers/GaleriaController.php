@@ -6,10 +6,17 @@ use App\Models\Galeria;
 use App\Models\Images;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use App\Http\Middleware\Admin;
 
 
 class GaleriaController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(Admin::class);
+    }
+
     /**
      * Display a listing of the resource.
      *
