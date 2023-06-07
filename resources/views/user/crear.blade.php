@@ -1,7 +1,7 @@
 @extends('plantillaAdmin')
 @section('contenido')
-    <div class="container mt-5">
-        <br><br><br><br><br>
+    <div class="container-fluid mt-5">
+        <br>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand">Usuarios</a>
@@ -27,7 +27,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </label>
-                                <input type="text" class="form-control form-control-lg" id="dni" name="dni"
+                                <input type="text" class="form-control " id="dni" name="dni"
                                     value="{{ old('dni') }}" placeholder="Introduce un DNI.">
                             </div>
                             <div class="mb-3">
@@ -35,7 +35,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </label>
-                                <input type="text" class="form-control form-control-lg" id="name" name="name"
+                                <input type="text" class="form-control " id="name" name="name"
                                     value="{{ old('name') }}" placeholder="Introduce un nombre.">
                             </div>
                             <div class="mb-3">
@@ -43,7 +43,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </label>
-                                <input type="email" class="form-control form-control-lg" id="email" name="email"
+                                <input type="email" class="form-control " id="email" name="email"
                                     value="{{ old('email') }}" placeholder="Introduce un correo.">
                             </div>
                             <div class="mb-3">
@@ -51,7 +51,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </label>
-                                <input type="tel" class="form-control form-control-lg" id="telefono" name="telefono"
+                                <input type="tel" class="form-control " id="telefono" name="telefono"
                                     value="{{ old('telefono')}}" placeholder="Introduce un numero de telefono.">
                             </div>
                             <div class="mb-3">
@@ -60,7 +60,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </label>
-                                <select class="form-select form-control-lg" name="tipo">
+                                <select class="form-select " name="tipo">
                                     @if (old('tipo') == 'Administrador')
                                     <option selected>Administrador</option>    
                                     <option>Usuario</option>
@@ -73,11 +73,8 @@
                                     @endif
                                 </select>
                             </div>
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary btn-lg">Crear</button>
-                                <a type="button" class="btn btn-secondary btn-lg"
-                                    href="{{ route('admin.index') }}">Cancelar</a>
-                            </div>
+                            <a type="button" class="btn btn-secondary" href="{{ route('admin.index') }}">Cancelar</a>
+                            <button type="submit" class="btn btn-primary">Crear</button>
                         </form>
                     </div>
                 </div>

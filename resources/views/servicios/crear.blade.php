@@ -1,7 +1,7 @@
 @extends('plantillaAdmin')
 @section('contenido')
-    <div class="container mt-5">
-        <br><br><br><br><br>
+    <div class="container-fluid mt-5">
+        <br>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand">Servicios</a>
@@ -28,7 +28,7 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </label><br>
-                        <input style="width: 748px;" class="border rounded focus:outline-none focus:shadow-outline p-2 mb-4"
+                        <input class="border rounded focus:outline-none focus:shadow-outline p-2 mb-4 form-control"
                             type="text" name="nombre" value="{{ old('nombre') }}"
                             placeholder="Escribe el nombre del servicio">
                     </div>

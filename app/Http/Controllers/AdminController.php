@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Middleware\Admin;
 
 class AdminController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(Admin::class);
+    }
+
     /**
      * Display a listing of the resource.
      *

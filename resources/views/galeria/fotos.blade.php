@@ -1,7 +1,7 @@
 @extends('plantillaAdmin')
 @section('contenido')
     <div class="container-fluid mt-5">
-        <br><br><br><br><br>
+        <br>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand">Galerias</a>
@@ -16,12 +16,17 @@
                 </div>
             </div>
         </nav>
-        <div class="row">
-            @foreach($fotos as $foto)
-            <div class="col-md-4 mb-4 mt-3">
-                <img src="{{asset('img/'.$foto->image)}}" style="width: 100%; border: 1px black solid;">
+        <div class="container-fluid">
+            <div class="row">
+                @foreach($fotos as $foto)
+                <div class="col-md-4 col-12 mb-4 mt-3">
+                    <div class="image-container">
+                        <img src="{{asset('img/'.$foto->image)}}" class="img-fluid" style="border: 1px solid black;">
+                    </div>
+                </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
+        
     </div>
 @endsection

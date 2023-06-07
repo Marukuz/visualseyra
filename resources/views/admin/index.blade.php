@@ -1,7 +1,7 @@
 @extends('plantillaAdmin')
 @section('contenido')
 <div class="container-fluid mt-5">
-  <br><br><br><br><br>
+  <br>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
     <div class="container-fluid">
       <a class="navbar-brand">Usuarios</a>
