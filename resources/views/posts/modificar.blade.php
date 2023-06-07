@@ -29,7 +29,7 @@
                         <span class="text-danger">{{$message}}</span>
                         @enderror    
                     </label><br>
-                    <input style="width: 748px;" class="border rounded focus:outline-none focus:shadow-outline p-2 mb-4" type="text" name="title" value="{{ old('title',$post->title) }}">
+                    <input class="form-control" type="text" name="title" value="{{ old('title',$post->title) }}">
                 </div>
                 <div class="mb-12">
                     <label>Contenido:
@@ -38,9 +38,9 @@
                         @enderror 
                     </label>
                     <textarea class="ckeditor border rounded focus:outline-none focus:shadow-outline p-2 mb-4" name="body">{!! old('body',html_entity_decode(htmlspecialchars($post->body))) !!}</textarea>
-                </div>
+                </div><br>
                 <div class="mb-12">
-                    Is draft?
+                    Es un borrador?
                     <input type="hidden" name="is_draft" value="0">
                     @if (!$post->is_draft)
                     <input type="checkbox" name="is_draft" value="1">
@@ -49,8 +49,8 @@
                 @endif
                 </div>
                 <div class="mb-12 text-center">
-                    <a class="btn btn-warning" href="{{ route('posts.index') }}">Cancelar</a>
-                    <button class="btn btn-success" type="submit">Modificar</button>
+                    <a class="btn btn-secondary" href="{{ route('posts.index') }}">Cancelar</a>
+                    <button class="btn btn-warning" type="submit">Modificar</button>
                 </div>
             </form>
         </div>

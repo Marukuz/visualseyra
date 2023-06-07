@@ -29,11 +29,21 @@
                         <span class="text-danger">{{$message}}</span>
                         @enderror    
                     </label><br>
-                    <input style="width: 748px;" class="border rounded focus:outline-none focus:shadow-outline p-2 mb-4" type="text" name="nombre" value="{{ $servicio->nombre }}" placeholder="Escribe el nombre del servicio">
-                </div>
+                    <input class="form-control" type="text" name="nombre" value="{{ $servicio->nombre }}" placeholder="Escribe el nombre del servicio">
+                </div><br>
+                <div class="mb-12">
+                    <div class="form-group">
+                        <label>Imagen del Servicio:
+                            @error('image')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </label><br>
+                        <input type="file" class="form-control" name="image">
+                    </div>
+                </div><br>
                 <div class="mb-12 text-center">
-                    <a class="btn btn-warning" href="{{ route('servicio.listar') }}">Cancelar</a>
-                    <button class="btn btn-success" type="submit">Editar</button>
+                    <a class="btn btn-secondary" href="{{ route('servicio.listar') }}">Cancelar</a>
+                    <button class="btn btn-warning" type="submit">Modificar</button>
                 </div>
             </form>
         </div>

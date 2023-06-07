@@ -70,10 +70,10 @@
                                 <span class="text-danger">{{$message}}</span>
                                 @enderror      
                             </label><br>
-                            <textarea class="border rounded focus:outline-none focus:shadow-outline p-2 mb-4" name="contenido" rows="5" cols="127" placeholder="Describe el contenido del pack.">{{old('contenido',$pack->contenido)}}</textarea>
+                            <textarea class="form-control" name="contenido" rows="5" cols="127" placeholder="Describe el contenido del pack.">{{old('contenido',$pack->contenido)}}</textarea>
                         </div>
                     </div>
-                </div>
+                </div><br>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -87,8 +87,8 @@
                     </div>
                 </div><br>
                 <div class="mb-12 text-center">
-                    <a class="btn btn-warning" href="{{ route('pack.index') }}">Cancelar</a>
-                    <button class="btn btn-success" type="submit">Crear</button>
+                    <a class="btn btn-secondary" href="{{ route('pack.index') }}">Cancelar</a>
+                    <button class="btn btn-warning" type="submit">Modificar</button>
                 </div>
             </form>
         </div>

@@ -73,8 +73,10 @@
                                     @endif
                                 </select>
                             </div>
-                            <a type="button" class="btn btn-secondary" href="{{ route('admin.index') }}">Cancelar</a>
-                            <button type="submit" class="btn btn-primary">Crear</button>
+                            <div class="mb-12 text-center">
+                                <a type="button" class="btn btn-secondary" href="{{ route('admin.index') }}">Cancelar</a>
+                                <button type="submit" class="btn btn-success">Crear</button>
+                            </div>                        
                         </form>
                     </div>
                 </div>

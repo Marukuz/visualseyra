@@ -32,7 +32,7 @@
                 <td>{{ $servicio->nombre}}</td>
                 <td>{{ $servicio->descripcion}}</td>
                 <td class="text-center">
-                    <a class="inline-block px-4 py-1 bg-blue-500 text-white rounded mr-2 hover:bg-blue-800 btn btn-warning" href="{{ route('servicio.edit', $servicio) }}" title="Edit">Editar</a>
+                    <a class="inline-block px-4 py-1 bg-blue-500 text-white rounded mr-2 hover:bg-blue-800 btn btn-warning" href="{{ route('servicio.edit', $servicio) }}" title="Edit">Modificar</a>
                     <a class="inline-block px-4 py-1 bg-red-500 text-white rounded mr-2 hover:bg-red-800 delete-service btn btn-danger" data-service-id="{{$servicio->id}}" title="Delete">Eliminar</a>
                 </td>
             </tr>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Middleware\Admin;
+use App\Models\Images;
 
 class ImagesController extends Controller
 {
@@ -88,5 +89,7 @@ class ImagesController extends Controller
     public function destroy($id)
     {
         //
+        $foto = Images::find($id);
+        $foto->delete();
     }
 }

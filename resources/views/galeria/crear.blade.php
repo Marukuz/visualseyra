@@ -28,10 +28,10 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </label><br>
-                        <input style="width: 748px;" class="border rounded focus:outline-none focus:shadow-outline p-2 mb-4"
+                        <input class="form-control"
                             type="text" name="nombre" value="{{ old('nombre') }}"
                             placeholder="Escribe el nombre de la galeria">
-                    </div>
+                    </div><br>
                     <div class="mb-12">
                         <div class="form-group">
                             <label>Imagen de la galeria:

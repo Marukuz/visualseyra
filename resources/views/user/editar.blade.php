@@ -28,7 +28,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </label>
-                                <input type="text" class="form-control form-control-lg" id="dni" name="dni"
+                                <input type="text" class="form-control" id="dni" name="dni"
                                     value="{{ old('dni', $user['dni']) }}">
                             </div>
                             <div class="mb-3">
@@ -36,7 +36,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </label>
-                                <input type="text" class="form-control form-control-lg" id="name" name="name"
+                                <input type="text" class="form-control" id="name" name="name"
                                     value="{{ old('name', $user['name']) }}">
                             </div>
                             <div class="mb-3">
@@ -44,7 +44,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </label>
-                                <input type="email" class="form-control form-control-lg" id="email" name="email"
+                                <input type="email" class="form-control" id="email" name="email"
                                     value="{{ old('email', $user['email']) }}">
                             </div>
                             <div class="mb-3">
@@ -52,7 +52,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </label>
-                                <input type="tel" class="form-control form-control-lg" id="telefono" name="telefono"
+                                <input type="tel" class="form-control" id="telefono" name="telefono"
                                     value="{{ old('telefono', $user['telefono']) }}">
                             </div>
                             <div class="mb-3">
@@ -61,7 +61,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </label>
-                                <select class="form-select form-control-lg" name="tipo">
+                                <select class="form-select" name="tipo">
                                     @if ($user['tipo'] == 'Administrador')
                                         <option selected>Administrador</option>
                                         <option>Usuario</option>
@@ -72,10 +72,9 @@
 
                                 </select>
                             </div>
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary btn-lg">Modificar</button>
-                                <a type="button" class="btn btn-secondary btn-lg"
-                                    href="{{ route('admin.index') }}">Cancelar</a>
+                            <div class="mb-12 text-center">
+                                <a type="button" class="btn btn-secondary" href="{{ route('admin.index') }}">Cancelar</a>
+                                <button type="submit" class="btn btn-warning">Modificar</button>
                             </div>
                         </form>
                     </div>

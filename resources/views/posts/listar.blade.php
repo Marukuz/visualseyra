@@ -43,7 +43,7 @@
                     @endif
                 </td>
                 <td class="text-center">
-                    <a class="inline-block px-4 py-1 bg-blue-500 text-white rounded mr-2 hover:bg-blue-800 btn btn-warning" href="{{ route('posts.edit', $post) }}" title="Edit">Editar</a>
+                    <a class="inline-block px-4 py-1 bg-blue-500 text-white rounded mr-2 hover:bg-blue-800 btn btn-warning" href="{{ route('posts.edit', $post) }}" title="Edit">Modificar</a>
                     <a class="inline-block px-4 py-1 bg-red-500 text-white rounded mr-2 hover:bg-red-800 delete-post btn btn-danger" title="Delete" data-post-id="{{$post->id}}">Eliminar</a>
                 </td>
             </tr>

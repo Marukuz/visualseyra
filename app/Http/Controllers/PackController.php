@@ -133,11 +133,18 @@ class PackController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $nombreArchivo = 'pack_'.$datos['nombre'].'_'.time().'.'.$image->getClientOriginalExtension();
+
+            $compressedImage = Image::make($image)
+            ->resize(null, 800, function ($constraint) {
+                $constraint->aspectRatio();
+            })
+            ->encode('jpg', 80);
+
             //Borrar antigua imagen por si acaso
             $rutaArchivo = public_path('img') . '/' . $pack->image;
             unlink($rutaArchivo);    
             // Movemos la nueva imagen s
-            $image->move(public_path('img'), $nombreArchivo);
+            $compressedImage->save(public_path('img/' . $nombreArchivo));
                 
             $datos['image'] = $nombreArchivo;
         }

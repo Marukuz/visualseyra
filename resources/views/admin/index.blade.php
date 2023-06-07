@@ -28,15 +28,15 @@
     </thead>
     <tbody>
       @foreach($users as $user)
-      <tr class="text-center">
+      <tr>
         <td>{{$user->id}}</td>
         <td>{{$user->dni}}</td>
         <td>{{$user->name}}</td>
         <td>{{$user->email}}</td>
         <td>{{$user->telefono}}</td>
         <td>{{$user->tipo}}</td>
-        <td>
-          <a class="btn btn-warning" href="{{ route('user.edit',$user) }}" >Modificar</a>
+        <td class="text-center">
+          <a class="btn btn-warning" href="{{ route('user.edit',$user) }}">Modificar</a>
           <button class="btn btn-danger delete-user" data-id="{{$user->id}}">Eliminar</button>
         </td>
       </tr>

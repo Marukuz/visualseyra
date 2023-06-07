@@ -86,7 +86,7 @@
                     </div>
                 </div><br>
                 <div class="mb-12 text-center">
-                    <a class="btn btn-warning" href="{{ route('pack.index') }}">Cancelar</a>
+                    <a class="btn btn-secondary" href="{{ route('pack.index') }}">Cancelar</a>
                     <button class="btn btn-success" type="submit">Crear</button>
                 </div>
             </form>
