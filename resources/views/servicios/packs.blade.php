@@ -34,12 +34,20 @@
                                                 <a href="{{ route('login') }}" class="btn btn-secondary buy-button">Pedir
                                                     Cita</a>
                                             @else
-                                                @if (Auth::user()->event)
-                                                    <a class="btn btn-primary buy-button error-cita"
-                                                        data-pack-id="{{ $pack->id }}">Pedir Cita</a>
-                                                    <p style="color: red;" class="error-cita-message"
+
+                                                @if (!Auth::user()->dni || !Auth::user()->telefono)
+                                                <p style="color: red;" class="error-cita-message-dni"
+                                                data-pack-id="{{ $pack->id }}" hidden>No puedes pedir otra cita
+                                                sin haber rellenado antes tus datos completos. Rellenalos dandole click aqui: <a href="{{route('perfil.index')}}">Perfil</a></p>
+                                                    <a class="btn btn-primary buy-button error-cita-dni"
+                                                    data-pack-id="{{ $pack->id }}">Pedir Cita</a>                                        
+                                                @elseif (Auth::user()->event)
+                                                <p style="color: red;" class="error-cita-message"
                                                         data-pack-id="{{ $pack->id }}" hidden>No puedes pedir otra cita
-                                                        teniendo una ya existente.</p>
+                                                        teniendo una ya existente.
+                                                    </p>
+                                                    <a class="btn btn-primary buy-button error-cita"
+                                                        data-pack-id="{{ $pack->id }}">Pedir Cita</a>                                            
                                                 @else
                                                     <a href="" class="btn btn-primary buy-button" data-toggle="modal"
                                                         data-target="#exampleModal{{ $pack->id }}">Pedir Cita</a>
@@ -92,6 +100,10 @@
                 $('.error-cita').click(function() {
                     var packId = $(this).data('pack-id');
                     $('.error-cita-message[data-pack-id="' + packId + '"]').removeAttr('hidden');
+                });
+                $('.error-cita-dni').click(function() {
+                    var packId = $(this).data('pack-id');
+                    $('.error-cita-message-dni[data-pack-id="' + packId + '"]').removeAttr('hidden');
                 });
             });
 

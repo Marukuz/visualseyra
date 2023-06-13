@@ -128,7 +128,6 @@ class PerfilController extends Controller
     {
         //
         $user = User::find($id);
-        Auth::logout();
         $user->delete();
     }
 }
