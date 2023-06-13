@@ -15,7 +15,7 @@ class Service extends Model
      */
     protected $table    = 'servicios';
 
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre','descripcion','image'];
 
     public function packs()
     {

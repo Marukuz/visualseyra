@@ -28,10 +28,20 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </label><br>
-                        <input class="border rounded focus:outline-none focus:shadow-outline p-2 mb-4 form-control"
+                        <input class="form-control"
                             type="text" name="nombre" value="{{ old('nombre') }}"
                             placeholder="Escribe el nombre del servicio">
-                    </div>
+                    </div><br>
+                    <div class="mb-12">
+                        <label>Descripcion
+                            @error('descripcion')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </label><br>
+                        <textarea class="form-control"
+                            type="text" name="descripcion"
+                            placeholder="Escribe la descripcion del servicio">{{ old('descripcion') }}</textarea>
+                    </div><br>
                     <div class="mb-12">
                         <div class="form-group">
                             <label>Imagen del Servicio:

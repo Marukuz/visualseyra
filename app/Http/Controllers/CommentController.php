@@ -30,9 +30,14 @@ class CommentController extends Controller
         $res = $comment->save();
 
         if ($res) {
-            return back()->with('status', 'Comment has been created sucessfully');
+            return back()->with('status', 'El comentario ha sido creado correctamente');
         }
 
-        return back()->withErrors(['msg', 'There was an error saving the comment, please try again later']);
+        return back()->withErrors(['msg', 'Ha habido un error al crear el comentario!']);
+    }
+
+    public function eliminarComentario($id){
+        $comment = Comment::find($id);
+        $comment->delete();
     }
 }

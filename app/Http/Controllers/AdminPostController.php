@@ -57,7 +57,7 @@ class AdminPostController extends Controller
 
         $image = $request->file('image');
 
-        $nombreArchivo = 'post_' . $datos['title'] . '_' . time() . '.' . $image->getClientOriginalExtension();
+        $nombreArchivo = 'post_'. time() . '.' . $image->getClientOriginalExtension();
 
         $compressedImage = Image::make($image)
             ->resize(null, 800, function ($constraint) {

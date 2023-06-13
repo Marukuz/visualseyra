@@ -18,7 +18,7 @@
     </nav>
     <div class="row justify-content-center mt-3">
         <div class="col-lg-7">
-            <form action="{{ route('servicio.update',$servicio) }}" method="post">
+            <form action="{{ route('servicio.update',$servicio) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT');
                 <h1 class="text-center mt-2">Editar Servicio</h1>
@@ -29,7 +29,17 @@
                         <span class="text-danger">{{$message}}</span>
                         @enderror    
                     </label><br>
-                    <input class="form-control" type="text" name="nombre" value="{{ $servicio->nombre }}" placeholder="Escribe el nombre del servicio">
+                    <input class="form-control" type="text" name="nombre" value="{{ old('nombre',$servicio->nombre) }}" placeholder="Escribe el nombre del servicio">
+                </div><br>
+                <div class="mb-12">
+                    <label>Descripcion
+                        @error('descripcion')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </label><br>
+                    <textarea class="form-control"
+                        type="text" name="descripcion"
+                        placeholder="Escribe la descripcion del servicio">{{ old('descripcion',$servicio->descripcion) }}</textarea>
                 </div><br>
                 <div class="mb-12">
                     <div class="form-group">

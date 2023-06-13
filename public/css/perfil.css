@@ -8,12 +8,17 @@
 	list-style: none;
 }
 
-body{
-	background: #eceff4;
-    background-image: url('../img/profile.jpg');
-	background-size: cover;
+html, body {
+    height: 100%;
 }
 
+body {
+    background: #eceff4;
+    background-image: url('../img/profile.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100%;
+}
 .wrapper{
 	position: relative;
 	width: 325px;

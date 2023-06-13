@@ -16,7 +16,7 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id')->constrained('users')->nullable();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->string("title", 255);
             $table->text("descripcion");

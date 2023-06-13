@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CitasUsuario;
 use App\Mail\CitasAdmin;
+use App\Mail\CitaCancelada;
+use App\Mail\CitaCanceladaAdmin;
 use Carbon\Carbon;
 use App\Http\Middleware\Admin;
 
@@ -107,6 +109,26 @@ class EventController extends Controller
         return redirect()->route('cita.show',Auth::user()->id);
     }
 
+    public function cancelarCita($id){
+
+        $evento   = Event::find($id);
+        $datetime = Carbon::parse($evento->start);
+        $dia      = $datetime->format('d');
+        $mes      = $datetime->format('F');
+        $hora     = $datetime->format('H');
+        $minutos  = $datetime->format('i');
+        $user     = Auth::user()->name;
+
+        Mail::to(Auth::user()->email)->send(new CitaCancelada($user,$dia,$mes,$hora,$minutos));
+
+        $admins = User::where('tipo', 'Administrador')->get();
+
+        foreach($admins as $admin){
+            Mail::to($admin->email)->send(new CitaCanceladaAdmin($admin->name,$user,$dia,$mes,$hora,$minutos));
+        }
+
+        $evento->delete();
+    }
     /**
      * Display the specified resource.
      *

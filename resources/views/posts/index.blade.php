@@ -25,7 +25,7 @@
                                         <div class="col-md-4 mb-4">
                                             <div class="card h-100 zoom-card">
                                                 <img src="{{ asset('img/' . $post->image) }}" class="card-img-top"
-                                                    alt="{{ $post->title }}">
+                                                    alt="{{ $post->title }}" style="height: 200px;">
                                                 <div class="card-body d-flex flex-column">
                                                     <h5 class="card-title">{{ $post->title }}</h5>
                                                     <p class="card-text flex-grow-1">{!! html_entity_decode(htmlspecialchars($post->get_limit_body)) !!}</p>

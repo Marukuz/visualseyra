@@ -54,7 +54,7 @@ Route::get('/post/{slug}', [PostController::class, 'detail'])->name('posts.detai
 
 // Comments routes
 Route::post('/comment', [CommentController::class, 'store'])->name('comments.store');
-
+Route::delete('/comment/delete/{id}', [CommentController::class, 'eliminarComentario'])->name('comments.delete');
 // Servicios routes
 Route::get('/servicios',[ServicioController::class, 'indexAdmin'])->name('servicio.listar');
 Route::get('/servicios/{id}/packs',[ServicioController::class, 'showPacks'])->name('servicio.packs');
@@ -65,6 +65,7 @@ Route::post('/usuario/crear', [UserController::class, 'storeUser'])->name('usuar
 
 // Cita Routes
 Route::get('/citas/{id}', [EventController::class,'showCitaUsuario'])->name('cita.show');
+Route::delete('/citas/cancelar/{id}',[EventController::class,'cancelarCita'])->name('cita.cancel');
 
 // Galeria Routes
 Route::get('galeria/addfoto/{id}',[GaleriaController::class,'addFoto'])->name('galeria.addfoto');
@@ -80,9 +81,14 @@ Route::get('/google-callback', function () {
     $user = Socialite::driver('google')->user();
     
     $userExists = User::where('google_id',$user->id)->where('external_auth','google')->exists();
+    
+    $userRegistred = User::where('email',$user->email)->exists();
 
     if($userExists){
         $user = User::where('google_id', $user->id)->where('external_auth', 'google')->first();
+        Auth::login($user);
+    }else if ($userRegistred) {
+        $user = User::where('email',$user->email)->first();
         Auth::login($user);
     }else{
         $userNew = User::create([

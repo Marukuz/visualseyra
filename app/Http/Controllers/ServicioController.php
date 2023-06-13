@@ -66,6 +66,7 @@ class ServicioController extends Controller
         //
         $datos = $request->validate([
             'nombre' => 'required',
+            'descripcion' => 'required',
             'image' => 'required',
         ], [
             'image.required' => 'Tienes que introducir una imagen.',
@@ -155,12 +156,14 @@ class ServicioController extends Controller
         //
         $datos = $request->validate([
             'nombre' => 'required',
+            'descripcion' => 'required',
         ]);
 
         $servicio = Service::find($id);
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
+
             $nombreArchivo = 'pack_' . $datos['nombre'] . '_' . time() . '.' . $image->getClientOriginalExtension();
 
             $compressedImage = Image::make($image)

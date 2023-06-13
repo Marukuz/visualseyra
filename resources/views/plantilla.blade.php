@@ -12,6 +12,7 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
     </script>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bootstrap/latest/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -52,10 +53,10 @@
                             </li>
                         @else
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button"
+                                <a class="nav-link dropdown-toggle" 
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Bienvenid@ {{ Auth::user()->name }}
-                                </button>
+                                </a>
                                 <ul class="dropdown-menu text-center">
                                     <li><a class="dropdown-item" href="{{ url('perfil') }}">Perfil</a></li>
                                     @if (Auth::user()->event)
@@ -73,14 +74,11 @@
                                     </li>
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
-                                        <button class="btn btn-danger mx-auto">
-                                            <x-responsive-nav-link class="text-decoration-none text-white"
-                                                :href="route('logout')"
-                                                onclick="event.preventDefault();
+                                        <a class="btn btn-danger" :href="route('logout')"
+                                        onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                                                {{ __('Log Out') }}
-                                            </x-responsive-nav-link>
-                                        </button>
+                                        {{ __('Salir') }}
+                                        </a>
                                     </form>
                                 </ul>
                             </div>
